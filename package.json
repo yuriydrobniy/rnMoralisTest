@@ -7,17 +7,22 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-modules": "rm -rf node_modules/"
   },
   "dependencies": {
-    "moralis": "^0.0.183",
+    "@react-native-async-storage/async-storage": "^1.15.15",
+    "@walletconnect/react-native-dapp": "^1.7.1",
+    "moralis": "^1.0.5",
     "node-libs-react-native": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "^17.0.2",
-    "react-moralis": "^0.3.11",
+    "react-moralis": "1.1.0",
     "react-native": "0.66.4",
     "react-native-dotenv": "^3.3.1",
-    "react-native-get-random-values": "^1.7.2"
+    "react-native-get-random-values": "^1.7.2",
+    "react-native-svg": "9.6.4",
+    "web3": "^1.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
