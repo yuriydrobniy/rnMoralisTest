@@ -1,128 +1,109 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
-import {MoralisProvider} from 'react-moralis';
+// import {MoralisProvider} from 'react-moralis';
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// import Moralis from 'moralis';
+import WalletConnectProvider, {
+  withWalletConnect,
+} from '@walletconnect/react-native-dapp';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// screens
+import LoginScreen from './screens/LoginScreen/LoginScreen';
 
 // @ts-ignore
 import {SERVER_URL, APP_ID} from 'react-native-dotenv';
-// import {SERVER_URL, APP_ID} from '@env';
-
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
 
 const environment = 'native';
+
+// Initialize Moralis with AsyncStorage to support react-native storage
+// Moralis.setAsyncStorage(AsyncStorage);
+
+// console.log('MORALIS', Moralis);
+console.log('WALLETCONNECT', withWalletConnect);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
+    flex: 1,
+    position: 'relative',
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const walletConnectOptions = {
+    bridge: "https://bridge.walletconnect.org",
+    clientMeta: {
+      description: 'Connect with WalletConnect',
+        url: 'https://walletconnect.org',
+        icons: ['https://walletconnect.org/walletconnect-logo.png'],
+        name: 'WalletConnect',
+    },
+    redirectUrl: 'yourappscheme://',
+    storageOptions: {
+      // @ts-ignore
+      asyncStorage: AsyncStorage,
+    },
+    // qrcodeModalOptions: {
+    //   mobileLinks: [
+    //     'rainbow',
+    //     'metamask',
+    //     'argent',
+    //     'trust',
+    //     'imtoken',
+    //     'pillar',
+    //   ],
+    // },
+    // Uncomment to show a QR-code to connect a wallet
+    // renderQrcodeModal: renderQrcodeModal,
+  };
+
+  // return (
+  //   <MoralisProvider
+  //     appId={APP_ID}
+  //     serverUrl={SERVER_URL}
+  //     environment={environment}>
+  //     <WalletConnectProvider {...walletConnectOptions}>
+  //       <SafeAreaView style={backgroundStyle}>
+  //         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+  //         <ScrollView
+  //           contentInsetAdjustmentBehavior="automatic"
+  //           style={backgroundStyle}>
+  //           <Header />
+  //           <LoginScreen />
+  //           {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
+  //         </ScrollView>
+  //       </SafeAreaView>
+  //     </WalletConnectProvider>
+  //   </MoralisProvider>
+  // );
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <MoralisProvider
-        appId={APP_ID}
-        serverUrl={SERVER_URL}
-        environment={environment}
-      >
+    <WalletConnectProvider {...walletConnectOptions}>
+      <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
           <Header />
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="See Your Changes">
-              <ReloadInstructions />
-            </Section>
-            <Section title="Debug">
-              <DebugInstructions />
-            </Section>
-            <Section title="Learn More">
-              Read the docs to discover what to do next:
-            </Section>
-            <LearnMoreLinks />
-          </View>
+          <LoginScreen />
+          {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
         </ScrollView>
-      </MoralisProvider>
-    </SafeAreaView>
+      </SafeAreaView>
+    </WalletConnectProvider>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
 export default App;
+
+// export default withWalletConnect(App, {
+//   redirectUrl: 'yourappscheme://',
+//   storageOptions: {
+//     asyncStorage: AsyncStorage,
+//   },
+// });

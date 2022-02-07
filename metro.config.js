@@ -7,7 +7,8 @@
 
 const node_libs = require('node-libs-react-native');
 
-node_libs.crypto = `${__dirname}/crypto.js`;
+// node_libs.crypto = `${__dirname}/crypto.js`;
+node_libs.crypto = require.resolve('@walletconnect/crypto');
 
 module.exports = {
   resolver: {
