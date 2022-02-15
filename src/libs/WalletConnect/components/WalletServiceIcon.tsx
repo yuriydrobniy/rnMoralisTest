@@ -35,13 +35,13 @@ export default function WalletServiceIcon({
   connectToWalletService,
   size = "md",
 }: WalletServiceIconProps): JSX.Element {
-  const uri = React.useMemo(
+  const logoUri = React.useMemo(
     () =>
       `https://registry.walletconnect.org/logo/${size}/${walletService.id}.jpeg`,
     [walletService, size]
   );
   const onPress = React.useCallback(
-    () => connectToWalletService(walletService),
+    () => {console.log('walletService click', walletService); return connectToWalletService(walletService)},
     [connectToWalletService, walletService]
   );
   return (
@@ -57,7 +57,7 @@ export default function WalletServiceIcon({
               height: height * 0.6,
             },
           ]}
-          source={{ uri }}
+          source={{ logoUri }}
         />
         <Text
           style={[styles.title, styles.fullWidth]}

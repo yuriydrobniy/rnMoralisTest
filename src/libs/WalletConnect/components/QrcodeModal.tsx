@@ -84,8 +84,17 @@ export default function QrcodeModal({
   onDismiss,
   division,
 }: RenderQrcodeModalProps & { readonly division: number }): JSX.Element {
+
+  console.log('QrcodeModal ->X', {visible,
+    walletServices,
+    connectToWalletService,
+    uri,
+    onDismiss,
+    division,})
+
   const shouldConnectToWalletService = React.useCallback(
     (walletService: WalletService) => {
+      console.log({walletService, connectToWalletService, uri})
       connectToWalletService(walletService, uri)
     },
     [connectToWalletService, uri]
@@ -99,6 +108,9 @@ export default function QrcodeModal({
     }),
     []
   );
+
+  console.log('walletServices -->', walletServices)
+
   const walletServiceRows = React.useMemo((): readonly (readonly WalletService[])[] => {
     return [...Array(Math.ceil(walletServices.length / division))].map((_, i) =>
       walletServices.slice(i * division, i * division + division)
@@ -177,6 +189,8 @@ export default function QrcodeModal({
   );
 
   const shouldRenderQrcode = Platform.OS === "web";
+
+  console.log('walletServiceRows  ->', walletServiceRows)
 
   return (
     <Modal

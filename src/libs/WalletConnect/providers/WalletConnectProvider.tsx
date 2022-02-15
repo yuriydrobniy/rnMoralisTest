@@ -134,13 +134,16 @@ export default function WalletConnectProvider({
     async (walletService: WalletService, uri?: string): Promise<void> => {
       //NOTE: Implemented deep linking inside connectToWalletService callback
       if (Platform.OS === "android") {
-        // const canOpenURL = await Linking.canOpenURL(uri);
-        // if (!canOpenURL) {
-        //   // Redirect the user to download a wallet.
-        //   Linking.openURL("https://walletconnect.org/wallets");
-        //   throw new Error("No wallets found.");
-        // }
-        await Linking.openURL(uri);
+        console.log("connectToWalletService uri", uri)
+        const canOpenURL = await Linking.canOpenURL(uri);
+        if (!canOpenURL) {
+          console.log("CANT OPEN")
+          // Redirect the user to download a wallet.
+          Linking.openURL("https://walletconnect.org/wallets");
+          throw new Error("No wallets found.");
+        }
+        // await Linking.openURL(uri);
+        return
       }
 
       if (typeof uri !== "string" || !uri.length) {
@@ -150,9 +153,9 @@ export default function WalletConnectProvider({
         typeof redirectUrl === "string"
           ? `&redirectUrl=${encodeURIComponent(redirectUrl)}`
           : "";
-      const connectionUrl = `${formatWalletServiceUrl(
-        walletService
-      )}/wc?uri=${encodeURIComponent(uri)}${maybeRedirectUrl}`;
+      const connectionUrl = `${formatWalletServiceUrl(walletService)}/wc?uri=${encodeURIComponent(uri)}${maybeRedirectUrl}`;
+
+      console.log('connectionUrl =>', {maybeRedirectUrl, connectionUrl})
 
       if (await Linking.canOpenURL(connectionUrl)) {
         return (

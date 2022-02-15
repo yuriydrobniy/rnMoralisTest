@@ -1,23 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   useColorScheme,
   View,
+  Linking,
 } from 'react-native';
 import {MoralisProvider} from 'react-moralis';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Moralis from 'moralis';
-// import WalletConnectProvider, {
-//   RenderQrcodeModalProps,
-//   withWalletConnect,
-// } from '@walletconnect/react-native-dapp';
+import WalletConnectProvider, {
+  RenderQrcodeModalProps,
+  withWalletConnect,
+} from '@walletconnect/react-native-dapp';
 
-import
-  WalletConnectProvider,
-{WalletConnectProviderProps} from './libs/WalletConnect';
+// import
+//   WalletConnectProvider,
+// {WalletConnectProviderProps} from './libs/WalletConnect';
 
 // screens
 import LoginScreen from './screens/LoginScreen/LoginScreen';
@@ -39,6 +40,7 @@ Moralis.setAsyncStorage(AsyncStorage);
 // Replace the enable function to use the react-native WalletConnect
 // Moralis.enable = enableViaWalletConnect;
 
+console.log("KEYS", AsyncStorage.getAllKeys());
 console.log('MORALIS', Moralis);
 
 const App = () => {
@@ -64,16 +66,16 @@ const App = () => {
       // @ts-ignore
       asyncStorage: AsyncStorage,
     },
-    qrcodeModalOptions: {
-      mobileLinks: [
-        "rainbow",
-        "metamask",
-        "argent",
-        "trust",
-        "imtoken",
-        "pillar",
-      ],
-    },
+    // qrcodeModalOptions: {
+    //   mobileLinks: [
+    //     "rainbow",
+    //     "metamask",
+    //     "argent",
+    //     "trust",
+    //     "imtoken",
+    //     "pillar",
+    //   ],
+    // },
     // Uncomment to show a QR-code to connect a wallet
     // renderQrcodeModal: renderQrcodeModal,
   };

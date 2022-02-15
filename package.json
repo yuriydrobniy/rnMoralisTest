@@ -8,11 +8,14 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "clean-modules": "rm -rf node_modules/"
+    "clean-modules": "rm -rf node_modules/",
+    "sim": "open -a Simulator.app",
+    "emul": "emulator -avd pixel_gp_29"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.15",
     "@walletconnect/react-native-dapp": "^1.7.1",
+    "crypto-browserify": "^3.12.0",
     "moralis": "^1.0.5",
     "node-libs-react-native": "^1.2.1",
     "react": "17.0.2",
