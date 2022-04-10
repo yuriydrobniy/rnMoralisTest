@@ -10,7 +10,7 @@ import {
 import {MoralisProvider} from 'react-moralis';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Moralis from 'moralis';
+import Moralis from 'moralis/react-native';
 import WalletConnectProvider, {
   RenderQrcodeModalProps,
   withWalletConnect,
@@ -37,6 +37,7 @@ const environment = 'native';
 
 // Initialize Moralis with AsyncStorage to support react-native storage
 Moralis.setAsyncStorage(AsyncStorage);
+Moralis.start({serverUrl: SERVER_URL, appId: APP_ID});
 // Replace the enable function to use the react-native WalletConnect
 // Moralis.enable = enableViaWalletConnect;
 

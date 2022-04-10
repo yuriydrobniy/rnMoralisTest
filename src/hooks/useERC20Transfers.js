@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react';
 import {useMoralis, useMoralisWeb3Api} from 'react-moralis';
-import Moralis from 'moralis';
+import Moralis from 'moralis/react-native';
 
 const useERC20Transfers = ({walletAddress, chainId}) => {
   const {account} = useMoralisWeb3Api();
   // const {account: _account} = Web3Api;
   // const MAIN = Moralis();
+  console.log('->0', {walletAddress, chainId})
   console.log('account  ->0', account)
   console.log('Web3Api  ->0', Moralis.Web3API.account)
   // const { walletAddress, chainId } = useMoralisDapp();
@@ -29,6 +30,7 @@ const useERC20Transfers = ({walletAddress, chainId}) => {
   // };
   const fetchERC20Transfers = async () => {
     return await Moralis.Web3API.account
+        // .getTokenTransfers({address: walletAddress, chain: chainId})
         .getTokenTransfers({address: walletAddress, chain: chainId})
         .then(result => result.result)
         .catch(e => {console.log('error - getTokenTransfers', e); alert(`${e.message} + 2`)});
