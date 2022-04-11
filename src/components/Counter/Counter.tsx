@@ -10,12 +10,12 @@ const Counter = () => {
 
   return (
     <View>
-      <TouchableOpacity onClick={() => dispatch(increment())}>
-        Increment
+      <TouchableOpacity onPress={() => dispatch(increment())}>
+        <Text>Increment</Text>
       </TouchableOpacity>
       <Text>{count}</Text>
-      <TouchableOpacity onClick={() => dispatch(decrement())}>
-        Decrement
+      <TouchableOpacity onPress={() => dispatch(decrement())}>
+        <Text>Decrement</Text>
       </TouchableOpacity>
     </View>
   );

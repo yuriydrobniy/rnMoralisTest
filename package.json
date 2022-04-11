@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "clean": "watchman watch-del-all & yarn cache clean",
-    "clean-modules": "rm -rf node_modules/",
+    "clean-modules": "watchman watch-del-all && rm -rf node_modules/ && rm -rf yarn.lock && yarn cache clean && yarn",
     "sim": "open -a Simulator.app",
     "emul": "emulator -avd pixel_gp_29"
   },

@@ -4,6 +4,8 @@ import {
   ScrollView,
   StatusBar,
   useColorScheme,
+  View,
+  Linking,
 } from 'react-native';
 import {MoralisProvider} from 'react-moralis';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
@@ -81,7 +83,7 @@ const App = () => {
   };
 
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
       <WalletConnectProvider {...walletConnectOptions}>
         <SafeAreaView style={backgroundStyle}>
           <MoralisProvider
@@ -99,7 +101,7 @@ const App = () => {
           </MoralisProvider>
         </SafeAreaView>
       </WalletConnectProvider>
-    // </Provider>
+    </Provider>
   );
 };
 
