@@ -11,10 +11,11 @@ import {MoralisProvider} from 'react-moralis';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Moralis from 'moralis/react-native';
-import WalletConnectProvider, {
-  RenderQrcodeModalProps,
-  withWalletConnect,
-} from '@walletconnect/react-native-dapp';
+import WalletConnectProvider from '@walletconnect/react-native-dapp';
+
+// store
+import {store} from './store';
+import {Provider} from 'react-redux';
 
 // import
 //   WalletConnectProvider,
@@ -100,23 +101,25 @@ const App = () => {
   // );
 
   return (
-    <WalletConnectProvider {...walletConnectOptions}>
-      <SafeAreaView style={backgroundStyle}>
-        <MoralisProvider
-          appId={APP_ID}
-          serverUrl={SERVER_URL}
-          environment={environment}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={backgroundStyle}>
-            <Header />
-            <LoginScreen />
-            {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
-          </ScrollView>
-        </MoralisProvider>
-      </SafeAreaView>
-    </WalletConnectProvider>
+    <Provider store={store}>
+      <WalletConnectProvider {...walletConnectOptions}>
+        <SafeAreaView style={backgroundStyle}>
+          <MoralisProvider
+            appId={APP_ID}
+            serverUrl={SERVER_URL}
+            environment={environment}>
+            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+            <ScrollView
+              contentInsetAdjustmentBehavior="automatic"
+              style={backgroundStyle}>
+              <Header />
+              <LoginScreen />
+              {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
+            </ScrollView>
+          </MoralisProvider>
+        </SafeAreaView>
+      </WalletConnectProvider>
+    </Provider>
   );
 };
 

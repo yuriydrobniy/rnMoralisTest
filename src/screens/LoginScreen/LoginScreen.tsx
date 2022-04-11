@@ -11,6 +11,7 @@ import {useMoralis} from 'react-moralis';
 // components
 import TransfersList from '../../components/TransfersList/TransfersList';
 import Balance from '../../components/Balance/Balance';
+import Counter from '../../components/Counter/Counter';
 
 // hooks
 // import useERC20Transfers from '../../hooks/useERC20Transfers';
@@ -134,6 +135,7 @@ const LoginScreen = () => {
           />
         </View>
       )}
+      <Counter />
     </View>
   );
 };
