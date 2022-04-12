@@ -4,8 +4,6 @@ import {
   ScrollView,
   StatusBar,
   useColorScheme,
-  View,
-  Linking,
 } from 'react-native';
 import {MoralisProvider} from 'react-moralis';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
@@ -14,8 +12,9 @@ import Moralis from 'moralis/react-native';
 import WalletConnectProvider from '@walletconnect/react-native-dapp';
 
 // store
-import {store} from './store';
+import {store, persistor} from './store';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
 // import
 //   WalletConnectProvider,
@@ -82,55 +81,29 @@ const App = () => {
     // renderQrcodeModal: renderQrcodeModal,
   };
 
-  // return (
-  //   <SafeAreaView style={backgroundStyle}>
-  //     <MoralisProvider
-  //       appId={APP_ID}
-  //       serverUrl={SERVER_URL}
-  //       environment={environment}>
-  //       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-  //       <ScrollView
-  //         contentInsetAdjustmentBehavior="automatic"
-  //         style={backgroundStyle}>
-  //         <Header />
-  //         <LoginScreen />
-  //         {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
-  //       </ScrollView>
-  //     </MoralisProvider>
-  //   </SafeAreaView>
-  // );
-
   return (
     <Provider store={store}>
-      <WalletConnectProvider {...walletConnectOptions}>
-        <SafeAreaView style={backgroundStyle}>
-          <MoralisProvider
-            appId={APP_ID}
-            serverUrl={SERVER_URL}
-            environment={environment}>
-            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-            <ScrollView
-              contentInsetAdjustmentBehavior="automatic"
-              style={backgroundStyle}>
-              <Header />
-              <LoginScreen />
-              {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
-            </ScrollView>
-          </MoralisProvider>
-        </SafeAreaView>
-      </WalletConnectProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <WalletConnectProvider {...walletConnectOptions}>
+          <SafeAreaView style={backgroundStyle}>
+            <MoralisProvider
+              appId={APP_ID}
+              serverUrl={SERVER_URL}
+              environment={environment}>
+              <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+              <ScrollView
+                contentInsetAdjustmentBehavior="automatic"
+                style={backgroundStyle}>
+                <Header />
+                <LoginScreen />
+                {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
+              </ScrollView>
+            </MoralisProvider>
+          </SafeAreaView>
+        </WalletConnectProvider>
+      </PersistGate>
     </Provider>
   );
 };
 
 export default App;
-
-// export default withWalletConnect(App, {
-//   redirectUrl: 'yourappscheme://',
-//   storageOptions: {
-//     asyncStorage: AsyncStorage,
-//   },
-//   renderQrcodeModal: (props: RenderQrcodeModalProps): JSX.Element => (
-//     <WalletModal {...props} />
-//   ),
-// });
