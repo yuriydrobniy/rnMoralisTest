@@ -7,6 +7,10 @@ import {
 // import {useWalletConnect} from '../../libs/WalletConnect';
 import {useMoralis} from 'react-moralis';
 // import Moralis from 'moralis';
+import {useDispatch} from 'react-redux';
+
+// actions
+import {loading, success, failed} from '../../store/slice/accountSlice';
 
 // components
 import TransfersList from '../../components/TransfersList/TransfersList';
@@ -21,9 +25,10 @@ import {getSignerThrowEthers} from '../../utils/getSignerThrowEthers';
 
 // styles
 import styles from './styles';
+import {CHAIN_ID} from '../../constants/global';
 
 const LoginScreen = () => {
-
+  const dispatch = useDispatch();
   const [currentProvider, setCurrentProvider] = useState(null);
 
   useEffect(() => {
@@ -90,7 +95,8 @@ const LoginScreen = () => {
   useEffect(() => {
     if (value?.connector) {
       const {accounts, chainId} = value.connector;
-      // console.log({accounts, chainId});
+      console.log({accounts, chainId});
+      dispatch(success({walletAddress: accounts[1], chainId: CHAIN_ID[`${chainId}`]}));
       // const { ERC20Transfers } = useERC20Transfers({walletAddress: accounts[1], chainId});
       // useEffect(() => {}, [ERC20Transfers]);
       // console.log("RES", ERC20Transfers)

@@ -3,7 +3,7 @@ export interface WalletAddress {
 }
 
 export interface ChainId {
-  chainId: string | null;
+  chainId: string;
 }
 
 export interface WalletSimpleCredential extends WalletAddress, ChainId {}
@@ -17,3 +17,11 @@ export interface GetNativeBalance {
 }
 
 export interface HookNativeBalance extends GetNativeBalance, NativeBalance {}
+
+export interface Error {
+  error: any | undefined;
+}
+
+export interface ChainIdMap {
+  [id: string]: string;
+}
