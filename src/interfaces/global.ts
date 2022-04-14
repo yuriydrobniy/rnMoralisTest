@@ -1,5 +1,5 @@
 export interface WalletAddress {
-  walletAddress: string;
+  address: string;
 }
 
 export interface ChainId {

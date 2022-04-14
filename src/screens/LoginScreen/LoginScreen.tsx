@@ -7,7 +7,7 @@ import {
 // import {useWalletConnect} from '../../libs/WalletConnect';
 import {useMoralis} from 'react-moralis';
 // import Moralis from 'moralis';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 // actions
 import {loading, success, failed} from '../../store/slice/accountSlice';
@@ -25,23 +25,32 @@ import {getSignerThrowEthers} from '../../utils/getSignerThrowEthers';
 
 // styles
 import styles from './styles';
+
+// constants
 import {CHAIN_ID} from '../../constants/global';
 
+// types
+import {RootState} from '../../store';
+
 const LoginScreen = () => {
+  const account = useSelector((state: RootState) => state.account);
+  console.log('account', account);
   const dispatch = useDispatch();
   const [currentProvider, setCurrentProvider] = useState(null);
 
   useEffect(() => {
     const {signer, provider} = getSignerThrowEthers();
-    console.log("SIGNER", signer);
-    console.log("Provider -> ", provider);
+    console.log('SIGNER', signer);
+    console.log('Provider -> ', provider);
     setCurrentProvider(provider);
   }, []);
 
   useEffect(() => {
     async function getBalance() {
       try {
-        const balance = await currentProvider.getBalance("0x4b0e8C57001b420F5Bbc00422eF8271f958d1B57");
+        const balance = await currentProvider.getBalance(
+          '0x4b0e8C57001b420F5Bbc00422eF8271f958d1B57',
+        );
         console.log('balance -->', balance);
       } catch (e) {
         console.error(e);
@@ -74,9 +83,9 @@ const LoginScreen = () => {
   // }, [])
 
   const connectorWC = useWalletConnect();
-  const connector = {
-    activate: () => connectorWC.connect(),
-  };
+  // const connector = {
+  //   activate: () => connectorWC.connect(),
+  // };
   // console.log('connector --> ', connector);
 
   const {authenticate, authError, isAuthenticated} = useMoralis();
@@ -96,7 +105,9 @@ const LoginScreen = () => {
     if (value?.connector) {
       const {accounts, chainId} = value.connector;
       console.log({accounts, chainId});
-      dispatch(success({walletAddress: accounts[1], chainId: CHAIN_ID[`${chainId}`]}));
+      dispatch(
+        success({address: accounts[0], chainId: CHAIN_ID[`${chainId}`]}),
+      );
       // const { ERC20Transfers } = useERC20Transfers({walletAddress: accounts[1], chainId});
       // useEffect(() => {}, [ERC20Transfers]);
       // console.log("RES", ERC20Transfers)
@@ -129,16 +140,13 @@ const LoginScreen = () => {
         style={styles.buttonStyle}>
         <Text style={styles.highlight}>App.tsx</Text>
       </TouchableOpacity>
-      {value?.connector && (
+      {account?.walletAddress && (
         <View>
-          <TransfersList
-            chainId={value.connector.chainId}
-            account={value.connector.accounts[0]}
-          />
-          <Balance
-            chainId={value.connector.chainId}
-            account={value.connector.accounts[0]}
-          />
+          {/*<TransfersList*/}
+          {/*  chainId={account.chainId}*/}
+          {/*  account={account.walletAddress}*/}
+          {/*/>*/}
+          <Balance chainId={account.chainId} address={account.address} />
         </View>
       )}
       <Counter />

@@ -3,9 +3,16 @@ import {useMoralis} from 'react-moralis';
 import Moralis from 'moralis/react-native';
 
 // types
-import {HookNativeBalance, NativeBalance, WalletSimpleCredential} from '../interfaces/global';
+import {
+  HookNativeBalance,
+  NativeBalance,
+  WalletSimpleCredential,
+} from '../interfaces/global';
 
-const useERC20Balance = ({walletAddress, chainId}: WalletSimpleCredential): HookNativeBalance => {
+const useERC20Balance = ({
+                           address,
+  chainId,
+}: WalletSimpleCredential): HookNativeBalance => {
   const {isInitialized} = useMoralis();
 
   const [balance, setBalance] = useState<string | null>(null);
@@ -17,13 +24,13 @@ const useERC20Balance = ({walletAddress, chainId}: WalletSimpleCredential): Hook
         .catch(e => console.log(e.message));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInitialized, chainId, walletAddress]);
+  }, [isInitialized, chainId, address]);
 
   const fetchERC20Balance = async (): Promise<string | void> => {
     return await Moralis.Web3API.account
-      .getNativeBalance({address: walletAddress, chain: chainId})
+      .getNativeBalance({address, chain: chainId})
       .then(result => {
-        console.log("RESULT", result);
+        console.log('RESULT', result);
         return result.balance;
       })
       .catch(e => console.log(e.message));

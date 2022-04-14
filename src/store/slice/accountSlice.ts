@@ -2,14 +2,14 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Error, WalletSimpleCredential} from '../../interfaces/global';
 
 export interface AccountState {
-  walletAddress: string;
+  address: string;
   chainId: string;
   isLoading: boolean;
   error: any | undefined;
 }
 
 const initialState: AccountState = {
-  walletAddress: '',
+  address: '',
   chainId: '',
   isLoading: false,
   error: undefined,
@@ -20,8 +20,8 @@ export const accountSlice = createSlice({
   initialState,
   reducers: {
     success: (state, action: PayloadAction<WalletSimpleCredential>) => {
-      const {walletAddress, chainId} = action.payload;
-      state.walletAddress = walletAddress;
+      const {address, chainId} = action.payload;
+      state.address = address;
       state.chainId = chainId;
       state.isLoading = false;
     },
