@@ -103,6 +103,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (value?.connector) {
+      console.log('value.connector', value.connector);
       const {accounts, chainId} = value.connector;
       console.log({accounts, chainId});
       dispatch(
@@ -138,18 +139,8 @@ const LoginScreen = () => {
         activeOpacity={0.5}
         onPress={connectWallet}
         style={styles.buttonStyle}>
-        <Text style={styles.highlight}>App.tsx</Text>
+        <Text style={styles.highlight}>SignIn</Text>
       </TouchableOpacity>
-      {account?.walletAddress && (
-        <View>
-          {/*<TransfersList*/}
-          {/*  chainId={account.chainId}*/}
-          {/*  account={account.walletAddress}*/}
-          {/*/>*/}
-          <Balance chainId={account.chainId} address={account.address} />
-        </View>
-      )}
-      <Counter />
     </View>
   );
 };

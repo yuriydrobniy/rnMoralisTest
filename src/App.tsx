@@ -1,12 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   useColorScheme,
 } from 'react-native';
 import {MoralisProvider} from 'react-moralis';
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Moralis from 'moralis/react-native';
 import WalletConnectProvider from '@walletconnect/react-native-dapp';
@@ -20,17 +18,17 @@ import {PersistGate} from 'redux-persist/integration/react';
 //   WalletConnectProvider,
 // {WalletConnectProviderProps} from './libs/WalletConnect';
 
-// screens
-import LoginScreen from './screens/LoginScreen/LoginScreen';
-
 // components
-import WalletModal from './components/WalletModal/WalletModal';
+// import WalletModal from './components/WalletModal/WalletModal';
 
 // utils
 import {enableViaWalletConnect} from './utils/walletConnectWeb3Helper';
 
 // @ts-ignore
 import {SERVER_URL, APP_ID} from 'react-native-dotenv';
+import MainContainer from './container/MainContainer';
+import {NavigationContainer} from '@react-navigation/native';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
 // import {SERVER_URL, APP_ID} from '@env';
 
 const environment = 'native';
@@ -57,9 +55,9 @@ const App = () => {
   //   <WalletModal {...props} />
   // );
 
-  const renderQrcodeModal = (props: WalletConnectProviderProps): JSX.Element => (
-      <WalletModal {...props} />
-  );
+  // const renderQrcodeModal = (props: WalletConnectProviderProps): JSX.Element => (
+  //     <WalletModal {...props} />
+  // );
 
   const walletConnectOptions: WalletConnectProviderProps = {
     redirectUrl: 'yourappscheme://',
@@ -90,14 +88,7 @@ const App = () => {
               appId={APP_ID}
               serverUrl={SERVER_URL}
               environment={environment}>
-              <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-              <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={backgroundStyle}>
-                <Header />
-                <LoginScreen />
-                {/*<View style={{position: 'absolute', top: 0, width: 300, height: 300, backgroundColor: "green"}} />*/}
-              </ScrollView>
+              <MainContainer />
             </MoralisProvider>
           </SafeAreaView>
         </WalletConnectProvider>

@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {PURGE} from 'redux-persist';
 import {Error, WalletSimpleCredential} from '../../interfaces/global';
 
 export interface AccountState {
@@ -32,6 +33,9 @@ export const accountSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+  },
+  extraReducers: builder => {
+    builder.addCase(PURGE, () => initialState);
   },
 });
 
