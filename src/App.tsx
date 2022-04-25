@@ -1,35 +1,23 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  useColorScheme,
-} from 'react-native';
+import {SafeAreaView, useColorScheme} from 'react-native';
 import {MoralisProvider} from 'react-moralis';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Moralis from 'moralis/react-native';
-import WalletConnectProvider from '@walletconnect/react-native-dapp';
+import WalletConnectProvider, {
+  WalletConnectProviderProps,
+} from '@walletconnect/react-native-dapp';
+
+// container
+import MainContainer from './container/MainContainer';
 
 // store
 import {store, persistor} from './store';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
-// import
-//   WalletConnectProvider,
-// {WalletConnectProviderProps} from './libs/WalletConnect';
-
-// components
-// import WalletModal from './components/WalletModal/WalletModal';
-
-// utils
-import {enableViaWalletConnect} from './utils/walletConnectWeb3Helper';
-
 // @ts-ignore
 import {SERVER_URL, APP_ID} from 'react-native-dotenv';
-import MainContainer from './container/MainContainer';
-import {NavigationContainer} from '@react-navigation/native';
-import LoginScreen from './screens/LoginScreen/LoginScreen';
-// import {SERVER_URL, APP_ID} from '@env';
 
 const environment = 'native';
 
@@ -38,9 +26,6 @@ Moralis.setAsyncStorage(AsyncStorage);
 Moralis.start({serverUrl: SERVER_URL, appId: APP_ID});
 // Replace the enable function to use the react-native WalletConnect
 // Moralis.enable = enableViaWalletConnect;
-
-console.log("KEYS", AsyncStorage.getAllKeys());
-console.log('MORALIS', Moralis);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -51,32 +36,12 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  // const renderQrcodeModal = (props: RenderQrcodeModalProps): JSX.Element => (
-  //   <WalletModal {...props} />
-  // );
-
-  // const renderQrcodeModal = (props: WalletConnectProviderProps): JSX.Element => (
-  //     <WalletModal {...props} />
-  // );
-
   const walletConnectOptions: WalletConnectProviderProps = {
     redirectUrl: 'yourappscheme://',
     storageOptions: {
       // @ts-ignore
       asyncStorage: AsyncStorage,
     },
-    // qrcodeModalOptions: {
-    //   mobileLinks: [
-    //     "rainbow",
-    //     "metamask",
-    //     "argent",
-    //     "trust",
-    //     "imtoken",
-    //     "pillar",
-    //   ],
-    // },
-    // Uncomment to show a QR-code to connect a wallet
-    // renderQrcodeModal: renderQrcodeModal,
   };
 
   return (
