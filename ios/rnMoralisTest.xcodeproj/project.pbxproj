@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* rnMoralisTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rnMoralisTestTests.m */; };
-		09A51C2B9F9C8BE7E57DAEC5 /* libPods-rnMoralisTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F98074096DF7665D835C96D /* libPods-rnMoralisTest.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		643A554E274C088FEBC3221D /* libPods-rnMoralisTest-rnMoralisTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2A5F8C47A399D26897879B /* libPods-rnMoralisTest-rnMoralisTestTests.a */; };
+		6DE351E4F5612BD31A41DD6A /* libPods-rnMoralisTest-rnMoralisTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42746F913D34F8D9A6FFBDB7 /* libPods-rnMoralisTest-rnMoralisTestTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F36BA52AE1A4DFDC6FC2E705 /* libPods-rnMoralisTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A04AC3BCCC238990482A43 /* libPods-rnMoralisTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,20 +30,20 @@
 		00E356EE1AD99517003FC87E /* rnMoralisTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rnMoralisTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* rnMoralisTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rnMoralisTestTests.m; sourceTree = "<group>"; };
-		09B140204E8AFCD9234E702A /* Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* rnMoralisTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnMoralisTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = rnMoralisTest/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = rnMoralisTest/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = rnMoralisTest/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = rnMoralisTest/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = rnMoralisTest/main.m; sourceTree = "<group>"; };
+		42746F913D34F8D9A6FFBDB7 /* libPods-rnMoralisTest-rnMoralisTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnMoralisTest-rnMoralisTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B77EA1D7AB9FD2E6EE8BBB /* Pods-rnMoralisTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest.release.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = rnMoralisTest/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8A2A5F8C47A399D26897879B /* libPods-rnMoralisTest-rnMoralisTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnMoralisTest-rnMoralisTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F98074096DF7665D835C96D /* libPods-rnMoralisTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnMoralisTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C48ED37F32087DDB13F2304E /* Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig"; sourceTree = "<group>"; };
-		DD1D50E59204DE86F1F31737 /* Pods-rnMoralisTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest.debug.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest.debug.xcconfig"; sourceTree = "<group>"; };
+		A4A04AC3BCCC238990482A43 /* libPods-rnMoralisTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnMoralisTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2F3F23A35FEB2019365A76 /* Pods-rnMoralisTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest.debug.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest.debug.xcconfig"; sourceTree = "<group>"; };
+		B1A000614664A23C19A759EB /* Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FFEDC8C2BEC1DF155DAFE65A /* Pods-rnMoralisTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest.release.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest.release.xcconfig"; sourceTree = "<group>"; };
+		FF0F753FC72550130432FED8 /* Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig"; path = "Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				643A554E274C088FEBC3221D /* libPods-rnMoralisTest-rnMoralisTestTests.a in Frameworks */,
+				6DE351E4F5612BD31A41DD6A /* libPods-rnMoralisTest-rnMoralisTestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09A51C2B9F9C8BE7E57DAEC5 /* libPods-rnMoralisTest.a in Frameworks */,
+				F36BA52AE1A4DFDC6FC2E705 /* libPods-rnMoralisTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				9F98074096DF7665D835C96D /* libPods-rnMoralisTest.a */,
-				8A2A5F8C47A399D26897879B /* libPods-rnMoralisTest-rnMoralisTestTests.a */,
+				A4A04AC3BCCC238990482A43 /* libPods-rnMoralisTest.a */,
+				42746F913D34F8D9A6FFBDB7 /* libPods-rnMoralisTest-rnMoralisTestTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,10 +109,10 @@
 		563889CADB8479CF59D6A449 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DD1D50E59204DE86F1F31737 /* Pods-rnMoralisTest.debug.xcconfig */,
-				FFEDC8C2BEC1DF155DAFE65A /* Pods-rnMoralisTest.release.xcconfig */,
-				09B140204E8AFCD9234E702A /* Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig */,
-				C48ED37F32087DDB13F2304E /* Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig */,
+				AA2F3F23A35FEB2019365A76 /* Pods-rnMoralisTest.debug.xcconfig */,
+				61B77EA1D7AB9FD2E6EE8BBB /* Pods-rnMoralisTest.release.xcconfig */,
+				FF0F753FC72550130432FED8 /* Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig */,
+				B1A000614664A23C19A759EB /* Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "rnMoralisTestTests" */;
 			buildPhases = (
-				1C66CE5ECD7F47E9E715F0F4 /* [CP] Check Pods Manifest.lock */,
+				1033A5A98059F17F50E03548 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				CD4319C3BCE83C94E09E0C39 /* [CP] Embed Pods Frameworks */,
-				F34ED3E73AB9EF73080C4E92 /* [CP] Copy Pods Resources */,
+				A641FC163E20BF8A59EB5F92 /* [CP] Embed Pods Frameworks */,
+				40A4EF75F6D8D6293DA298FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +176,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "rnMoralisTest" */;
 			buildPhases = (
-				709088D0F28BE62AB9C7D956 /* [CP] Check Pods Manifest.lock */,
+				9BC4766FB746CC2E775AE039 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B07F419D185B68878339C660 /* [CP] Embed Pods Frameworks */,
-				03AB18A8DAFEDE8A59EFB2EA /* [CP] Copy Pods Resources */,
+				67CA6098872AB9435114C451 /* [CP] Embed Pods Frameworks */,
+				59C148B1C80CFE8396E6033A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,24 +264,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		03AB18A8DAFEDE8A59EFB2EA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1C66CE5ECD7F47E9E715F0F4 /* [CP] Check Pods Manifest.lock */ = {
+		1033A5A98059F17F50E03548 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,7 +286,58 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		709088D0F28BE62AB9C7D956 /* [CP] Check Pods Manifest.lock */ = {
+		40A4EF75F6D8D6293DA298FE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59C148B1C80CFE8396E6033A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67CA6098872AB9435114C451 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BC4766FB746CC2E775AE039 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,24 +359,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B07F419D185B68878339C660 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest/Pods-rnMoralisTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD4319C3BCE83C94E09E0C39 /* [CP] Embed Pods Frameworks */ = {
+		A641FC163E20BF8A59EB5F92 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -357,23 +374,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F34ED3E73AB9EF73080C4E92 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnMoralisTest-rnMoralisTestTests/Pods-rnMoralisTest-rnMoralisTestTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -428,7 +428,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09B140204E8AFCD9234E702A /* Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig */;
+			baseConfigurationReference = FF0F753FC72550130432FED8 /* Pods-rnMoralisTest-rnMoralisTestTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -455,7 +455,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C48ED37F32087DDB13F2304E /* Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig */;
+			baseConfigurationReference = B1A000614664A23C19A759EB /* Pods-rnMoralisTest-rnMoralisTestTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -479,7 +479,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD1D50E59204DE86F1F31737 /* Pods-rnMoralisTest.debug.xcconfig */;
+			baseConfigurationReference = AA2F3F23A35FEB2019365A76 /* Pods-rnMoralisTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -506,7 +506,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFEDC8C2BEC1DF155DAFE65A /* Pods-rnMoralisTest.release.xcconfig */;
+			baseConfigurationReference = 61B77EA1D7AB9FD2E6EE8BBB /* Pods-rnMoralisTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -591,11 +591,11 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
-          "$(OTHER_CFLAGS)",
-          "-DFOLLY_NO_CONFIG",
-          "-DFOLLY_MOBILE=1",
-          "-DFOLLY_USE_LIBCPP=1",
-        );
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -654,11 +654,11 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CPLUSPLUSFLAGS = (
-          "$(OTHER_CFLAGS)",
-          "-DFOLLY_NO_CONFIG",
-          "-DFOLLY_MOBILE=1",
-          "-DFOLLY_USE_LIBCPP=1",
-        );
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
