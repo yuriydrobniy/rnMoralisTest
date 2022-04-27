@@ -6,12 +6,13 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start --reset-cache",
+    "air-start": "watchman watch-del '/Users/yu/work/rnMoralisTest' ; watchman watch-project '/Users/yu/work/rnMoralisTest' && react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "clean": "watchman watch-del-all & yarn cache clean",
     "clean-modules": "watchman watch-del-all && rm -rf node_modules/ && rm -rf yarn.lock && yarn cache clean && yarn",
     "sim": "open -a Simulator.app",
-    "emul": "emulator -avd pixel_gp_29"
+    "emul": "emulator -avd pixel_30"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.15",
@@ -26,7 +27,7 @@
     "react": "17.0.2",
     "react-dom": "^17.0.2",
     "react-moralis": "1.1.0",
-    "react-native": "0.66.4",
+    "react-native": "0.68.1",
     "react-native-dotenv": "^3.3.1",
     "react-native-get-random-values": "^1.7.2",
     "react-native-safe-area-context": "^4.2.4",
