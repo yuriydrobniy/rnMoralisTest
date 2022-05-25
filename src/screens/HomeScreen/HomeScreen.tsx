@@ -1,10 +1,9 @@
-import React, {useEffect, useContext, useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import {useMoralis} from 'react-moralis';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import {View} from 'react-native';
+import {useSelector} from 'react-redux';
 
 // components
-import TransfersList from '../../components/TransfersList/TransfersList';
+import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
 import Balance from '../../components/Balance/Balance';
 import Counter from '../../components/Counter/Counter';
 
@@ -22,11 +21,11 @@ const HomeScreen = () => {
   return (
     <View>
       <View>
-        {/*<TransfersList chainId={account.chainId} account={account.address} />*/}
         <Balance chainId={account.chainId} address={account.address} />
       </View>
       <Counter />
       <SignOut />
+      <PictureProcessing chainId={account.chainId} />
     </View>
   );
 };
