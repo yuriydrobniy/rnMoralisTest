@@ -62,3 +62,7 @@ buck-out/
 
 # Environment config
 .env
+
+#Hardhat files
+cache
+artifacts

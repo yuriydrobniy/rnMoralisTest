@@ -25,3 +25,7 @@ export interface Error {
 export interface ChainIdMap {
   [id: string]: string;
 }
+
+export interface RpcProviderMap {
+  [providerName: string]: string;
+}

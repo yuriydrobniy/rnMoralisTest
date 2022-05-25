@@ -7,7 +7,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 
 // actions
-import {loading, success, failed} from '../../store/slice/accountSlice';
+import {loading, success} from '../../store/slice/accountSlice';
 
 // components
 
@@ -15,10 +15,10 @@ import {loading, success, failed} from '../../store/slice/accountSlice';
 // import useERC20Transfers from '../../hooks/useERC20Transfers';
 
 // utils
-import {getSignerThrowEthers} from '../../utils/getSignerThrowEthers';
+// import {getSignerThrowEthers} from '../../utils/getSignerThrowEthers';
 
 // styles
-import styles from './styles';
+// import styles from './styles';
 
 // constants
 import {CHAIN_ID} from '../../constants/global';
@@ -26,42 +26,27 @@ import {CHAIN_ID} from '../../constants/global';
 // types
 import {RootState} from '../../store';
 import MainButton from '../../components/MainButton/MainButton';
+import WalletConnect from '@walletconnect/client';
+// import SelectButton from '../../components/SelectButton/SelectButton';
 
 const LoginScreen = () => {
   const account = useSelector((state: RootState) => state.account);
   console.log('account', account);
   const dispatch = useDispatch();
-  const [currentProvider, setCurrentProvider] = useState(null);
 
+  /*
+  const [currentProvider, setCurrentProvider] = useState(null);
   useEffect(() => {
     const {signer, provider} = getSignerThrowEthers();
-    console.log('SIGNER/Provider', {signer, provider});
+    // JsonRpcProvider - a speedy node like goerli
+    console.log('SIGNER/Provider from JsonRpcProvider:', {signer, provider});
     setCurrentProvider(provider);
   }, []);
-
   console.log('!!currentProvider', currentProvider);
 
-  // useEffect(() => {
-  //   console.log('HERE');
-  //   async function go() {
-  //     const user = await Moralis.authenticate({ provider: "walletconnect" })
-  //     console.log('-= |USER| =-', user)
-  //   }
-  //
-  //   go()
-  // }, [])
+   */
 
-  // useEffect(() => {
-  //   console.log('HERE');
-  //   async function go() {
-  //     const user = await Moralis.authenticate({ provider: "walletconnect" })
-  //     console.log('-= |USER| =-', user)
-  //   }
-  //
-  //   go()
-  // }, [])
-
-  const connectorWC = useWalletConnect();
+  const connectorWC: WalletConnect = useWalletConnect();
   // const connector = {
   //   activate: () => connectorWC.connect(),
   // };
@@ -78,37 +63,41 @@ const LoginScreen = () => {
     return connectorWC.connect();
   }, [connectorWC]);
 
+  /*
+  const [rpcProvider, setRpcProvider] = useState(null);
+  const onPressRpcProvider = React.useCallback(provider => {
+    setRpcProvider(provider);
+  }, []);
+
+  const rpcList = React.useCallback(() => {
+    return (
+      <>
+        {Object.keys(CHAIN_ID).map(key => {
+          return (
+            <SelectButton
+              key={key}
+              onPress={onPressRpcProvider}
+              text={CHAIN_ID[key]}
+              checked={CHAIN_ID[key] === rpcProvider}
+            />
+          );
+        })}
+      </>
+    );
+  }, [rpcProvider]);
+   */
+
   const {connector} = useContext(WalletConnectContext);
   // console.log('-VALUE-', value.connector);
 
   useEffect(() => {
     if (connector) {
-      // console.log('value.connector', connector);
       const {accounts, chainId} = connector;
-      // console.log({accounts, chainId});
       dispatch(
         success({address: accounts[0], chainId: CHAIN_ID[`${chainId}`]}),
       );
     }
   }, [connector?.chainId]);
-
-  // const handleCryptoLogin = () => {
-  //   console.log('handleCryptoLogin <--', connector.bridge)
-  //   connector._qrcodeModal.open();
-  //   authenticate({connector, provider: 'walletConnect'})
-  //     .then(() => {
-  //       console.log('then 1 <--');
-  //       if (authError) {
-  //         console.log('Error');
-  //         // setVisible(true);
-  //       } else {
-  //         if (isAuthenticated) {
-  //           console.log('Authenticated');
-  //         }
-  //       }
-  //     })
-  //     .catch(() => {});
-  // };
 
   console.log('isLoading', account.isLoading);
 
@@ -119,6 +108,7 @@ const LoginScreen = () => {
         text={'Sign In'}
         isLoading={account.isLoading}
       />
+      {/*{rpcList()}*/}
     </View>
   );
 };
