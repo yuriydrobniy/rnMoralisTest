@@ -10,9 +10,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
+import PreviewScreen from '../screens/PreviewScreen/PreviewScreen';
+import FormsScreen from '../screens/FormsScreen/FormsScreen';
 
 export type CameraStackParams = {
   Camera: undefined;
+  Preview: undefined;
   Forms: undefined;
 };
 
@@ -81,7 +84,8 @@ function CameraStackScreen() {
   return (
     <CameraStack.Navigator screenOptions={{headerShown: false}}>
       <CameraStack.Screen name="Camera" component={CameraScreen} />
-      <CameraStack.Screen name="Forms" component={CameraScreen} />
+      <CameraStack.Screen name="Preview" component={PreviewScreen} />
+      <CameraStack.Screen name="Forms" component={FormsScreen} />
     </CameraStack.Navigator>
   );
 }

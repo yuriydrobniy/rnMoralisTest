@@ -3,6 +3,7 @@ import {Text, TouchableOpacity} from 'react-native';
 import {ethers} from 'ethers';
 import {WalletConnectContext} from '@walletconnect/react-native-dapp';
 import WalletConnectProvider from '../../libs/web3-provider';
+import {useDispatch, useSelector} from 'react-redux';
 
 // utils
 import MyNFT from '../../utils/MyNFT.json';
@@ -11,18 +12,23 @@ import {mintContent, storeContent} from './utils';
 
 // constants
 import {CHAIN_ID, RPC} from '../../constants/global';
-import {galaxy} from "../../constants/images";
+
+// actions
+import {setMetadataPath} from '../../store/slice/contentSlice';
 
 // types
 import {ChainId} from '../../interfaces/global';
 
 // styles
 import styles from './styles';
+import {RootState} from '../../store';
 
-const PictureProcessing = ({chainId}: ChainId): JSX.Element => {
+const PictureProcessing = ({chainId, data}: {chainId: ChainId; data: string}): JSX.Element => {
+  const dispatch = useDispatch();
+  const {metadataPath} = useSelector((state: RootState) => state.content);
   const {connector} = useContext(WalletConnectContext);
   const [provider, setProvider] = useState<undefined | any>(undefined);
-  const [metadataPath, setMetadataPath] = useState<undefined | any>(undefined);
+  // const [metadataPath, setMetadataPath] = useState<undefined | any>(undefined);
 
   useEffect(() => {
     const initProvider = async (): Promise<void> => {
@@ -47,7 +53,7 @@ const PictureProcessing = ({chainId}: ChainId): JSX.Element => {
   }, [connector, WalletConnectProvider]);
 
   const mintNFT = useCallback(async () => {
-    await mintContent({
+    const res = await mintContent({
       signer: provider.getSigner(),
       metadataPath,
       quantity: 1,
@@ -55,21 +61,22 @@ const PictureProcessing = ({chainId}: ChainId): JSX.Element => {
   }, [provider, metadataPath]);
 
   const uploadFolder = async () => {
-    const result = await storeContent(galaxy);
+    const result = await storeContent(data);
     if (result?.length) {
       // const path = res[0].path.split("ipfs/");
       // setMetadataPath(`ipfs://${path[1]}`);
       // setMetadataPath(`https://ipfs.io/ipfs/QmcVZY43ViGQj2KfrKDWFh8HcPqJi2wTUGbjEScTn5hpo3`);
-      setMetadataPath(result[0].path);
+      dispatch(setMetadataPath({metadataPath: result[0].path}));
     }
   };
 
-  console.log('!provider!', provider || 'nope');
+  // console.log('!provider!', provider || 'nope');
   console.log('!Contract_ABI!', MyNFT.abi || 'nope');
+  console.log('-> !metadataPath!', metadataPath || 'nope');
 
   return (
     <>
-      <TouchableOpacity style={styles.buttonStyle} onPress={uploadFolder}>
+      <TouchableOpacity style={[styles.buttonStyle, !data && {backgroundColor: 'grey'}]} onPress={uploadFolder}>
         <Text style={styles.buttonText}>Send to IPFS</Text>
       </TouchableOpacity>
       <TouchableOpacity

@@ -79,6 +79,6 @@ export const mintContent = async ({
     return;
   }
 
-  console.log('WOOOOO', mintedContent);
+  console.log('WOOOOO - minted!', mintedContent);
   return mintedContent;
 };

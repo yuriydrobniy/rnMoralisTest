@@ -29,3 +29,11 @@ export interface ChainIdMap {
 export interface RpcProviderMap {
   [providerName: string]: string;
 }
+
+export interface Content {
+  content: string;
+}
+
+export interface MetadataPath {
+  metadataPath: string;
+}
