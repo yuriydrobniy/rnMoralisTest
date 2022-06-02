@@ -15,8 +15,8 @@ import FormsScreen from '../screens/FormsScreen/FormsScreen';
 
 export type CameraStackParams = {
   Camera: undefined;
-  Preview: undefined;
-  Forms: undefined;
+  Preview: {path: string; type: 'video' | 'photo'};
+  Forms: {contentUri: string};
 };
 
 export type RootStackParams = {
@@ -51,8 +51,13 @@ export type HomeNavigationProps = NativeStackScreenProps<
 >;
 
 export type CameraNavigationProps = NativeStackScreenProps<
-  HomeStackParams,
+  CameraStackParams,
   'Camera'
+>;
+
+export type PreviewNavigationProps = NativeStackScreenProps<
+  CameraStackParams,
+  'Preview'
 >;
 
 const RootStack = createNativeStackNavigator<RootStackParams>();

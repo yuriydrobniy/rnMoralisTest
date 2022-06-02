@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // components
@@ -9,7 +8,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
 // types
-import {RootState} from '../../store';
 import {
   Camera,
   PhotoFile,
@@ -21,8 +19,9 @@ import {
 import Color from '../../theme/colors';
 import {useIsForeground} from '../../hooks/useIsForeground';
 import {useIsFocused} from '@react-navigation/native';
+import {CameraNavigationProps} from '../../navigation';
 
-const CameraScreen = ({navigation}) => {
+const CameraScreen = ({navigation}: CameraNavigationProps) => {
   const camera = useRef<Camera>(null);
   console.log(' --> camera <--', camera);
 
@@ -36,7 +35,6 @@ const CameraScreen = ({navigation}) => {
     const permissionStatus = await Camera.getCameraPermissionStatus();
     console.log('permissionStatus', permissionStatus);
     if (permissionStatus !== 'authorized') {
-      console.log('here');
       await Camera.requestCameraPermission();
     } else {
       setCameraPermission(true);
@@ -76,7 +74,6 @@ const CameraScreen = ({navigation}) => {
   );
 
   const takePhoto = useCallback(async () => {
-    console.log('TAKE_PHOTO')
     try {
       if (camera.current == null) {
         throw new Error('Camera ref is null!');
@@ -96,28 +93,19 @@ const CameraScreen = ({navigation}) => {
   console.log({devices, device});
 
   return (
-    <View style={{flex: 1, backgroundColor: 'yellow'}}>
+    <View style={styles.cameraContainer}>
       <TouchableOpacity
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          zIndex: 1,
-          backgroundColor: 'pink',
-          padding: 10,
-          alignSelf: 'flex-start',
-        }}
+        style={styles.backButton}
         onPress={() => navigation.goBack()}>
         <Icon name="chevron-left" size={40} />
       </TouchableOpacity>
-      {/*<Icon name="photo-camera" size={24} />*/}
       <>
         {!device ? (
           <ActivityIndicator size="large" color={Color.black} />
         ) : (
           <Camera
             ref={camera}
-            style={{flex: 1}}
+            style={styles.cameraContainer}
             device={device}
             isActive={isActive}
             photo={true}
@@ -126,17 +114,7 @@ const CameraScreen = ({navigation}) => {
         )}
       </>
       {isCameraInitialized && (
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            bottom: 60,
-            // left: '-50%',
-            zIndex: 1,
-            // backgroundColor: 'pink',
-            padding: 0,
-            alignSelf: 'center',
-          }}
-          onPress={takePhoto}>
+        <TouchableOpacity style={styles.bottomButton} onPress={takePhoto}>
           <Icon name="sentiment-satisfied-alt" size={64} color={Color.white} />
         </TouchableOpacity>
       )}

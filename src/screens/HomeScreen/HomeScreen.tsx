@@ -28,7 +28,7 @@ const HomeScreen = ({navigation}: HomeNavigationProps) => {
       <View>
         <Balance chainId={account.chainId} address={account.address} />
       </View>
-      <Counter />
+      {/*<Counter />*/}
       <SignOut />
       <PictureProcessing chainId={account.chainId} />
       <MainButton

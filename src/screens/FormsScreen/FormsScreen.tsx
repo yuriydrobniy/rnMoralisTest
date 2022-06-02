@@ -19,34 +19,22 @@ import styles from './styles';
 // types
 import {HomeNavigationProps} from '../../navigation';
 
-const FormsScreen = ({navigation}: HomeNavigationProps) => {
+const FormsScreen = ({navigation, route}: HomeNavigationProps) => {
+  const {contentUri} = route.params;
   const {chainId} = useSelector((state: RootState) => state.account);
-  const {content} = useSelector((state: RootState) => state.content);
-  // console.log('account', account);
-  // console.log('navigation', navigation);
-  console.log('content', content)
-
-  // const { path, type } = route.params;
-  // const source = useMemo(() => ({ uri: `file://${path}` }), [path]);
-  // console.log({path, source})
 
   const [base64Data, setBase64Data] = useState<undefined | any>(undefined);
 
-  useEffect( () => {
+  useEffect(() => {
     const getBlob = async () => {
-      // const imageResponse = await fetch(source.uri);
-      // console.log('imageResponse', imageResponse)
-      // const blob = await imageResponse.blob();
-      // console.log('BL_OB', blob)
-      const res = await RNFS.readFile(content, 'base64');
-      // console.log('BASE_64', res)
+      const res = await RNFS.readFile(contentUri, 'base64');
       setBase64Data(`data:image/png;base64,${res}`);
     };
 
-    if (content) {
+    if (contentUri) {
       getBlob();
     }
-  }, [content])
+  }, [contentUri])
 
   return (
     <View>

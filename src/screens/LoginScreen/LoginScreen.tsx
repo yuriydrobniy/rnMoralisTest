@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {View} from 'react-native';
 import {
   useWalletConnect,
@@ -30,38 +30,24 @@ import WalletConnect from '@walletconnect/client';
 // import SelectButton from '../../components/SelectButton/SelectButton';
 
 const LoginScreen = () => {
-  const account = useSelector((state: RootState) => state.account);
-  console.log('account', account);
   const dispatch = useDispatch();
-
-  /*
-  const [currentProvider, setCurrentProvider] = useState(null);
-  useEffect(() => {
-    const {signer, provider} = getSignerThrowEthers();
-    // JsonRpcProvider - a speedy node like goerli
-    console.log('SIGNER/Provider from JsonRpcProvider:', {signer, provider});
-    setCurrentProvider(provider);
-  }, []);
-  console.log('!!currentProvider', currentProvider);
-
-   */
-
+  const account = useSelector((state: RootState) => state.account);
   const connectorWC: WalletConnect = useWalletConnect();
-  // const connector = {
-  //   activate: () => connectorWC.connect(),
-  // };
-  // console.log('connector --> ', connector);
-
-  // const {authenticate, authError, isAuthenticated} = useMoralis();
-
-  // console.log('?!isAuthenticated', isAuthenticated);
-
-  // const [visible, setVisible] = React.useState(false);
+  const {connector} = useContext(WalletConnectContext);
 
   const connectWallet = React.useCallback(() => {
     dispatch(loading());
     return connectorWC.connect();
   }, [connectorWC]);
+
+  useEffect(() => {
+    if (connector?.connected) {
+      const {accounts, chainId} = connector;
+      dispatch(
+        success({address: accounts[0], chainId: CHAIN_ID[`${chainId}`]}),
+      );
+    }
+  }, [connector]);
 
   /*
   const [rpcProvider, setRpcProvider] = useState(null);
@@ -86,20 +72,6 @@ const LoginScreen = () => {
     );
   }, [rpcProvider]);
    */
-
-  const {connector} = useContext(WalletConnectContext);
-  // console.log('-VALUE-', value.connector);
-
-  useEffect(() => {
-    if (connector) {
-      const {accounts, chainId} = connector;
-      dispatch(
-        success({address: accounts[0], chainId: CHAIN_ID[`${chainId}`]}),
-      );
-    }
-  }, [connector?.chainId]);
-
-  console.log('isLoading', account.isLoading);
 
   return (
     <View style={{backgroundColor: '#343434', flex: 1}}>

@@ -14,7 +14,12 @@ import {mintContent, storeContent} from './utils';
 import {CHAIN_ID, RPC} from '../../constants/global';
 
 // actions
-import {setMetadataPath} from '../../store/slice/contentSlice';
+import {
+  ContentState,
+  deleteContent,
+  setMetadataPath,
+  setMintStatus,
+} from '../../store/slice/contentSlice';
 
 // types
 import {ChainId} from '../../interfaces/global';
@@ -23,9 +28,17 @@ import {ChainId} from '../../interfaces/global';
 import styles from './styles';
 import {RootState} from '../../store';
 
-const PictureProcessing = ({chainId, data}: {chainId: ChainId; data: string}): JSX.Element => {
+const PictureProcessing = ({
+  chainId,
+  data,
+}: {
+  chainId: ChainId;
+  data: string;
+}): JSX.Element => {
   const dispatch = useDispatch();
-  const {metadataPath} = useSelector((state: RootState) => state.content);
+  const {metadataPath, mintStatus}: ContentState = useSelector(
+    (state: RootState) => state.content,
+  );
   const {connector} = useContext(WalletConnectContext);
   const [provider, setProvider] = useState<undefined | any>(undefined);
   // const [metadataPath, setMetadataPath] = useState<undefined | any>(undefined);
@@ -53,11 +66,17 @@ const PictureProcessing = ({chainId, data}: {chainId: ChainId; data: string}): J
   }, [connector, WalletConnectProvider]);
 
   const mintNFT = useCallback(async () => {
-    const res = await mintContent({
-      signer: provider.getSigner(),
-      metadataPath,
-      quantity: 1,
-    });
+    try {
+      await mintContent({
+        signer: provider.getSigner(),
+        metadataPath,
+        quantity: 1,
+      });
+      dispatch(setMintStatus({mintStatus: true}));
+    } catch (e) {
+      console.log(e);
+      return;
+    }
   }, [provider, metadataPath]);
 
   const uploadFolder = async () => {
@@ -70,13 +89,18 @@ const PictureProcessing = ({chainId, data}: {chainId: ChainId; data: string}): J
     }
   };
 
+  const onClear = () => dispatch(deleteContent());
+
   // console.log('!provider!', provider || 'nope');
   console.log('!Contract_ABI!', MyNFT.abi || 'nope');
   console.log('-> !metadataPath!', metadataPath || 'nope');
 
   return (
     <>
-      <TouchableOpacity style={[styles.buttonStyle, !data && {backgroundColor: 'grey'}]} onPress={uploadFolder}>
+      <TouchableOpacity
+        style={[styles.buttonStyle, !data && {backgroundColor: 'grey'}]}
+        disabled={!data}
+        onPress={uploadFolder}>
         <Text style={styles.buttonText}>Send to IPFS</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -84,6 +108,12 @@ const PictureProcessing = ({chainId, data}: {chainId: ChainId; data: string}): J
         onPress={mintNFT}
         disabled={!metadataPath}>
         <Text style={styles.buttonText}>Mint!</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.buttonStyle, !mintStatus && {backgroundColor: 'grey'}]}
+        disabled={!mintStatus}
+        onPress={onClear}>
+        <Text style={styles.buttonText}>Clear content data</Text>
       </TouchableOpacity>
     </>
   );

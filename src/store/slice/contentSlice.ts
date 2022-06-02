@@ -1,29 +1,35 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {PURGE} from 'redux-persist';
-import {Content, MetadataPath} from '../../interfaces/global';
+import {ContentPath, MetadataPath, MintStatus} from '../../interfaces/global';
 
-export interface ContentState extends MetadataPath, Content {}
+export interface ContentState extends MetadataPath, ContentPath, MintStatus {}
 
 const initialState: ContentState = {
-  content: '',
+  contentPath: '',
   metadataPath: '',
+  mintStatus: false,
 };
 
 export const contentSlice = createSlice({
   name: 'content',
   initialState,
   reducers: {
-    setContent: (state, action: PayloadAction<Content>) => {
-      const {content} = action.payload;
-      state.content = content;
+    setContentPath: (state, action: PayloadAction<ContentPath>) => {
+      const {contentPath} = action.payload;
+      state.contentPath = contentPath;
     },
     setMetadataPath: (state, action: PayloadAction<MetadataPath>) => {
       const {metadataPath} = action.payload;
       state.metadataPath = metadataPath;
     },
+    setMintStatus: (state, action: PayloadAction<MintStatus>) => {
+      const {mintStatus} = action.payload;
+      state.mintStatus = mintStatus;
+    },
     deleteContent: state => {
-      state.content = '';
+      state.contentPath = '';
       state.metadataPath = '';
+      state.mintStatus = false;
     },
   },
   extraReducers: builder => {
@@ -32,5 +38,6 @@ export const contentSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {setContent, deleteContent, setMetadataPath} = contentSlice.actions;
+export const {setContentPath, deleteContent, setMetadataPath, setMintStatus} =
+  contentSlice.actions;
 export default contentSlice.reducer;

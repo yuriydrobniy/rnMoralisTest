@@ -1,21 +1,22 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  buttonStyle: {
-    backgroundColor: '#7DE24E',
-    borderWidth: 0,
-    color: '#FFFFFF',
-    borderColor: '#7DE24E',
-    height: 40,
-    alignItems: 'center',
-    borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
-    marginTop: 20,
-    marginBottom: 25,
+  cameraContainer: {flex: 1, backgroundColor: 'yellow'},
+  bottomButton: {
+    position: 'absolute',
+    bottom: 60,
+    zIndex: 1,
+    padding: 0,
+    alignSelf: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  backButton: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 1,
+    backgroundColor: 'pink',
+    padding: 10,
+    alignSelf: 'flex-start',
   },
 });
 
