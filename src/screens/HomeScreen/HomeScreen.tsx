@@ -17,9 +17,11 @@ import styles from './styles';
 
 // types
 import {HomeNavigationProps} from '../../navigation';
+import NFTList from '../../components/NFTList/NFTList';
+import {AccountState} from '../../store/slice/accountSlice';
 
 const HomeScreen = ({navigation}: HomeNavigationProps) => {
-  const account = useSelector((state: RootState) => state.account);
+  const account: AccountState = useSelector((state: RootState) => state.account);
   console.log('account', account);
   console.log('navigation', navigation);
 
@@ -27,10 +29,11 @@ const HomeScreen = ({navigation}: HomeNavigationProps) => {
     <View>
       <View>
         <Balance chainId={account.chainId} address={account.address} />
+        <NFTList chainId={account.chainId} address={account.address} />
       </View>
       {/*<Counter />*/}
       <SignOut />
-      <PictureProcessing chainId={account.chainId} />
+      <PictureProcessing address={account.address} chainId={account.chainId} />
       <MainButton
         onPress={() => navigation.navigate('CameraStack')}
         isLoading={false}

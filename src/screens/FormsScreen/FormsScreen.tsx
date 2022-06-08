@@ -21,7 +21,7 @@ import {HomeNavigationProps} from '../../navigation';
 
 const FormsScreen = ({navigation, route}: HomeNavigationProps) => {
   const {contentUri} = route.params;
-  const {chainId} = useSelector((state: RootState) => state.account);
+  const {adress, chainId} = useSelector((state: RootState) => state.account);
 
   const [base64Data, setBase64Data] = useState<undefined | any>(undefined);
 

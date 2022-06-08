@@ -7,12 +7,13 @@ import {RINKEBY_CONTRACT} from 'react-native-dotenv';
 // todo - type for base64. https://www.npmjs.com/package/js-base64 ?
 export const storeContent = async (
   content: string,
+  currentId: string,
 ): Promise<any[] | undefined> => {
   // return false;
   let path;
   let storedMetadata;
 
-  let contentAbiPath = 'galaxy.jpeg';
+  let contentAbiPath = `${currentId}.jpeg`;
   const contentAbi = {
     abi: [
       {
@@ -38,8 +39,7 @@ export const storeContent = async (
   // todo - remove btoa. https://www.npmjs.com/package/js-base64 ?
   const jsonMetadata = btoa(JSON.stringify(metadata));
 
-  let metadataAbiPath =
-    '0000000000000000000000000000000000000000000000000000000000000001.json';
+  let metadataAbiPath = `${currentId}.json`;
   const metadataAbi = {
     abi: [
       {

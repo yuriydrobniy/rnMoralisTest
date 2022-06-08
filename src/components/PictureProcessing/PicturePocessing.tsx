@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 // utils
 import MyNFT from '../../utils/MyNFT.json';
-import {getKeyByValue} from '../../utils';
+import {getKeyByValue, setIdName} from '../../utils';
 import {mintContent, storeContent} from './utils';
 
 // constants
@@ -22,16 +22,19 @@ import {
 } from '../../store/slice/contentSlice';
 
 // types
-import {ChainId} from '../../interfaces/global';
+import {ChainId, WalletAddress} from '../../interfaces/global';
 
 // styles
 import styles from './styles';
 import {RootState} from '../../store';
+import useNFTList from '../../hooks/useNFTList';
 
 const PictureProcessing = ({
+  address,
   chainId,
   data,
 }: {
+  address: WalletAddress;
   chainId: ChainId;
   data: string;
 }): JSX.Element => {
@@ -40,6 +43,7 @@ const PictureProcessing = ({
     (state: RootState) => state.content,
   );
   const {connector} = useContext(WalletConnectContext);
+  const {nftList} = useNFTList({address, chainId});
   const [provider, setProvider] = useState<undefined | any>(undefined);
   // const [metadataPath, setMetadataPath] = useState<undefined | any>(undefined);
 
@@ -80,7 +84,12 @@ const PictureProcessing = ({
   }, [provider, metadataPath]);
 
   const uploadFolder = async () => {
-    const result = await storeContent(data);
+    let previousId = '0';
+    if (nftList.length) {
+      previousId = nftList?.[0].token_id;
+    }
+    const currentId = setIdName(previousId);
+    const result = await storeContent(data, currentId);
     if (result?.length) {
       // const path = res[0].path.split("ipfs/");
       // setMetadataPath(`ipfs://${path[1]}`);

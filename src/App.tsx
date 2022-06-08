@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {SafeAreaView, useColorScheme} from 'react-native';
 import {MoralisProvider} from 'react-moralis';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Moralis from 'moralis/react-native';
 import WalletConnectProvider, {
@@ -18,6 +17,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 
 // @ts-ignore
 import {SERVER_URL, APP_ID} from 'react-native-dotenv';
+import Colors from './theme/colors';
 
 const environment = 'native';
 
@@ -30,11 +30,13 @@ Moralis.start({serverUrl: SERVER_URL, appId: APP_ID});
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    flex: 1,
-    position: 'relative',
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const backgroundStyle = useMemo(() => {
+    return {
+      flex: 1,
+      position: 'relative',
+      backgroundColor: isDarkMode ? Colors.white : Colors.black,
+    };
+  }, [isDarkMode]);
 
   const walletConnectOptions: WalletConnectProviderProps = {
     redirectUrl: 'yourappscheme://',
