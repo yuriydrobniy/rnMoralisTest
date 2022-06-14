@@ -10,7 +10,7 @@ import {
 } from '../interfaces/global';
 
 const useERC20Balance = ({
-                           address,
+  address,
   chainId,
 }: WalletSimpleCredential): HookNativeBalance => {
   const {isInitialized} = useMoralis();

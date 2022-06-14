@@ -4,9 +4,12 @@ import styles from './styles';
 import {Button} from '../../interfaces/components';
 import Color from '../../theme/colors';
 
-const MainButton = (props: Button): JSX.Element => {
+const MainButton = ({disabled, ...props}: Button): JSX.Element => {
   return (
-    <TouchableOpacity style={styles.buttonStyle} onPress={props.onPress}>
+    <TouchableOpacity
+      disabled={disabled}
+      style={[styles.buttonStyle, disabled && styles.disabledBackground]}
+      onPress={props.onPress}>
       {props.isLoading ? (
         <ActivityIndicator size="small" color={Color.white} />
       ) : (

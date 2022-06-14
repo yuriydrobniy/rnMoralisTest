@@ -7,12 +7,14 @@ import {RINKEBY_CONTRACT} from 'react-native-dotenv';
 // todo - type for base64. https://www.npmjs.com/package/js-base64 ?
 export const storeContent = async (
   content: string,
+  currentId: string,
+  nameDescription: any,
 ): Promise<any[] | undefined> => {
   // return false;
   let path;
   let storedMetadata;
 
-  let contentAbiPath = 'galaxy.jpeg';
+  let contentAbiPath = `${currentId}.jpeg`;
   const contentAbi = {
     abi: [
       {
@@ -31,15 +33,14 @@ export const storeContent = async (
 
   const metadata = {
     image: path[0].path,
-    name: 'Galaxy',
-    description: 'Galaxy NFT',
+    name: nameDescription.name,
+    description: nameDescription.description,
     external_url: path[0].path,
   };
   // todo - remove btoa. https://www.npmjs.com/package/js-base64 ?
   const jsonMetadata = btoa(JSON.stringify(metadata));
 
-  let metadataAbiPath =
-    '0000000000000000000000000000000000000000000000000000000000000001.json';
+  let metadataAbiPath = `${currentId}.json`;
   const metadataAbi = {
     abi: [
       {
@@ -79,6 +80,6 @@ export const mintContent = async ({
     return;
   }
 
-  console.log('WOOOOO', mintedContent);
+  console.log('WOOOOO - minted!', mintedContent);
   return mintedContent;
 };

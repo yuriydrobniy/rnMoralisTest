@@ -13,6 +13,7 @@ export const RPC: RpcProviderMap = {
   ropsten:
     'https://speedy-nodes-nyc.moralis.io/eaeba3168d05f9ebe601a0dc/eth/ropsten',
   rinkeby:
+    // 'wss://speedy-nodes-nyc.moralis.io/eaeba3168d05f9ebe601a0dc/eth/rinkeby',
     'https://speedy-nodes-nyc.moralis.io/eaeba3168d05f9ebe601a0dc/eth/rinkeby',
   goerli:
     'https://speedy-nodes-nyc.moralis.io/eaeba3168d05f9ebe601a0dc/eth/goerli',

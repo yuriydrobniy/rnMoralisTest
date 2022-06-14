@@ -1,10 +1,15 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {PURGE} from 'redux-persist';
-import {Error, WalletSimpleCredential} from '../../interfaces/global';
+import {
+  ChainId,
+  Error,
+  WalletAddress,
+  WalletSimpleCredential,
+} from '../../interfaces/global';
 
 export interface AccountState {
-  address: string;
-  chainId: string;
+  address: WalletAddress | string;
+  chainId: ChainId | string;
   isLoading: boolean;
   error: any | undefined;
 }
