@@ -15,6 +15,7 @@ import Color from '../../theme/colors';
 
 // types
 import {PreviewNavigationProps} from '../../navigation';
+import StereoImageIcon from '../../components/StereoImageIcon/StereoImageIcon';
 
 const PreviewScreen = ({navigation, route}: PreviewNavigationProps) => {
   const {path} = route.params;
@@ -53,7 +54,7 @@ const PreviewScreen = ({navigation, route}: PreviewNavigationProps) => {
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => navigation.goBack()}>
-        <Icon name="clear" size={40} />
+        <StereoImageIcon name="chevron-left" size={40} />
       </TouchableOpacity>
       <Image
         source={source}
@@ -63,7 +64,7 @@ const PreviewScreen = ({navigation, route}: PreviewNavigationProps) => {
         onLoad={onMediaLoad}
       />
       <TouchableOpacity style={styles.bottomButton} onPress={onSetContent}>
-        <Icon name="thumb-up-alt" size={64} color={Color.white} />
+        <StereoImageIcon name="thumb-up-alt" size={64} />
       </TouchableOpacity>
     </View>
   );

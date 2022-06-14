@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     zIndex: 1,
-    backgroundColor: 'pink',
     padding: 10,
     alignSelf: 'flex-start',
   },

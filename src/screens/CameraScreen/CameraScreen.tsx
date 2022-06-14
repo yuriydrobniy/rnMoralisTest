@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // components
 
@@ -20,6 +19,7 @@ import Color from '../../theme/colors';
 import {useIsForeground} from '../../hooks/useIsForeground';
 import {useIsFocused} from '@react-navigation/native';
 import {CameraNavigationProps} from '../../navigation';
+import StereoImageIcon from '../../components/StereoImageIcon/StereoImageIcon';
 
 const CameraScreen = ({navigation}: CameraNavigationProps) => {
   const camera = useRef<Camera>(null);
@@ -90,14 +90,12 @@ const CameraScreen = ({navigation}: CameraNavigationProps) => {
   const devices = useCameraDevices();
   const device = devices.front;
 
-  console.log({devices, device});
-
   return (
     <View style={styles.cameraContainer}>
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => navigation.goBack()}>
-        <Icon name="chevron-left" size={40} />
+        <StereoImageIcon name="chevron-left" size={40} />
       </TouchableOpacity>
       <>
         {!device ? (
@@ -113,9 +111,9 @@ const CameraScreen = ({navigation}: CameraNavigationProps) => {
           />
         )}
       </>
-      {isCameraInitialized && (
+      {isCameraInitialized && device && (
         <TouchableOpacity style={styles.bottomButton} onPress={takePhoto}>
-          <Icon name="sentiment-satisfied-alt" size={64} color={Color.white} />
+          <StereoImageIcon name="sentiment-satisfied-alt" size={64} />
         </TouchableOpacity>
       )}
     </View>

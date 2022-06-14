@@ -60,6 +60,12 @@ export type PreviewNavigationProps = NativeStackScreenProps<
   'Preview'
 >;
 
+// HomeStackParams - to fix type for navigation.navigate('Home') from FormsScreen
+export type FormsNavigationProps = NativeStackScreenProps<
+  CameraStackParams & HomeStackParams,
+  'Forms'
+>;
+
 const RootStack = createNativeStackNavigator<RootStackParams>();
 const AuthStack = createNativeStackNavigator<AuthStackParams>();
 const HomeStack = createNativeStackNavigator<HomeStackParams>();
@@ -109,7 +115,7 @@ function SettingsStackScreen() {
 
 function Main() {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator screenOptions={{headerShown: false, tabBarHideOnKeyboard: true}}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>

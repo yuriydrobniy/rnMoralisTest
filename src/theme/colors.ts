@@ -24,4 +24,9 @@ export default {
   greyLightMid: '#C8C7CC',
   greyMid: '#8C8C8C',
   whiteDirty: '#D7D7D7',
+
+  lilac: '#8C52FF',
+  neonBlue: '#01FFFF',
+  neonPink: '#FF00FF',
+  neonDarkGrey: '#545454',
 };

@@ -8,6 +8,7 @@ import {RINKEBY_CONTRACT} from 'react-native-dotenv';
 export const storeContent = async (
   content: string,
   currentId: string,
+  nameDescription: any,
 ): Promise<any[] | undefined> => {
   // return false;
   let path;
@@ -32,8 +33,8 @@ export const storeContent = async (
 
   const metadata = {
     image: path[0].path,
-    name: 'Galaxy',
-    description: 'Galaxy NFT',
+    name: nameDescription.name,
+    description: nameDescription.description,
     external_url: path[0].path,
   };
   // todo - remove btoa. https://www.npmjs.com/package/js-base64 ?

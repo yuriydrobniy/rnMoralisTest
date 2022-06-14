@@ -13,5 +13,5 @@ export const setIdName = (previousId: string): string => {
     template.length - previousId.length,
   );
   // @ts-ignore
-  return preparedString + ++id;
+  return preparedString + ++previousId;
 };

@@ -1,7 +1,12 @@
 import {StyleSheet} from 'react-native';
+import Colors from '../../../theme/colors';
 
 const styles = StyleSheet.create({
-  cameraContainer: {flex: 1, backgroundColor: 'yellow'},
+  cameraContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: Colors.neonDarkGrey,
+  },
   bottomButton: {
     position: 'absolute',
     bottom: 60,
@@ -14,7 +19,6 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     zIndex: 1,
-    backgroundColor: 'pink',
     padding: 10,
     alignSelf: 'flex-start',
   },

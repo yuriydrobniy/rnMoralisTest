@@ -6,9 +6,9 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 
 // components
-import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
+// import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
 import Balance from '../../components/Balance/Balance';
-import Counter from '../../components/Counter/Counter';
+// import Counter from '../../components/Counter/Counter';
 import SignOut from '../../components/SignOut/SignOut';
 import MainButton from '../../components/MainButton/MainButton';
 
@@ -21,7 +21,9 @@ import NFTList from '../../components/NFTList/NFTList';
 import {AccountState} from '../../store/slice/accountSlice';
 
 const HomeScreen = ({navigation}: HomeNavigationProps) => {
-  const account: AccountState = useSelector((state: RootState) => state.account);
+  const account: AccountState = useSelector(
+    (state: RootState) => state.account,
+  );
   console.log('account', account);
   console.log('navigation', navigation);
 
@@ -32,13 +34,13 @@ const HomeScreen = ({navigation}: HomeNavigationProps) => {
         <NFTList chainId={account.chainId} address={account.address} />
       </View>
       {/*<Counter />*/}
-      <SignOut />
-      <PictureProcessing address={account.address} chainId={account.chainId} />
+      {/*<PictureProcessing address={account.address} chainId={account.chainId} />*/}
       <MainButton
         onPress={() => navigation.navigate('CameraStack')}
         isLoading={false}
         text={'Camera'}
       />
+      <SignOut />
     </View>
   );
 };
