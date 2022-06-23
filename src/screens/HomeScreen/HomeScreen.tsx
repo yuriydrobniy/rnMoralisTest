@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 // store
@@ -19,6 +19,7 @@ import styles from './styles';
 import {HomeNavigationProps} from '../../navigation';
 import NFTList from '../../components/NFTList/NFTList';
 import {AccountState} from '../../store/slice/accountSlice';
+import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
 
 const HomeScreen = ({navigation}: HomeNavigationProps) => {
   const account: AccountState = useSelector(
@@ -29,18 +30,9 @@ const HomeScreen = ({navigation}: HomeNavigationProps) => {
 
   return (
     <View>
-      <View>
-        <Balance chainId={account.chainId} address={account.address} />
-        <NFTList chainId={account.chainId} address={account.address} />
-      </View>
-      {/*<Counter />*/}
-      {/*<PictureProcessing address={account.address} chainId={account.chainId} />*/}
-      <MainButton
-        onPress={() => navigation.navigate('CameraStack')}
-        isLoading={false}
-        text={'Camera'}
-      />
-      <SignOut />
+      <Balance chainId={account.chainId} address={account.address} />
+      <Text>Your NFT</Text>
+      <NFTList chainId={account.chainId} address={account.address} />
     </View>
   );
 };

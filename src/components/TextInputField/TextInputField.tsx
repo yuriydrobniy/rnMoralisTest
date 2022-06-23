@@ -26,15 +26,14 @@ const TextInputField = ({
   height,
   placeholder,
 }: TextInputFieldProps): JSX.Element => {
-  const inputHeight = {height};
   return (
     <View style={styles.fieldWrapper}>
       <TextInput
-        style={[
-          styles.textInput,
-          inputHeight && inputHeight,
-          inputHeight && styles.textAlignTop,
-        ]}
+        style={{
+          ...styles.textInput,
+          ...(height ? {height: height} : {}),
+          ...(height ? styles.textAlignTop : {}),
+        }}
         onBlur={onBlur}
         onChangeText={onChange}
         value={value}

@@ -4,6 +4,7 @@ import React, {
   useState,
   useCallback,
   useMemo,
+  memo,
 } from 'react';
 import {
   KeyboardAvoidingView,
@@ -66,6 +67,7 @@ const PictureProcessing = ({
   );
 
   useEffect(() => {
+    if (!chainId) return;
     const initProvider = async (): Promise<void> => {
       const id: number = +getKeyByValue(CHAIN_ID, chainId)!;
       const settings = {
@@ -172,4 +174,4 @@ const PictureProcessing = ({
   );
 };
 
-export default PictureProcessing;
+export default memo(PictureProcessing);

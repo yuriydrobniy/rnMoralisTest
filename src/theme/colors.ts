@@ -9,6 +9,7 @@ export default {
   blackMid: '#343434',
   blackLight: '#444444',
   blackCoal: '#212121',
+  light: '#FFFFFF',
 
   dark: '#2d3030',
   blue: '#1F6EB9',
@@ -29,4 +30,6 @@ export default {
   neonBlue: '#01FFFF',
   neonPink: '#FF00FF',
   neonDarkGrey: '#545454',
+  neonRed: '#FF195A',
+  neonDarkGreyT: 'rgba(84,84,84,0.67)',
 };

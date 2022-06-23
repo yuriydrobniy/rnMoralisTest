@@ -18,7 +18,7 @@ import {loading, success} from '../../store/slice/accountSlice';
 // import {getSignerThrowEthers} from '../../utils/getSignerThrowEthers';
 
 // styles
-// import styles from './styles';
+import styles from './styles';
 
 // constants
 import {CHAIN_ID} from '../../constants/global';
@@ -27,6 +27,7 @@ import {CHAIN_ID} from '../../constants/global';
 import {RootState} from '../../store';
 import MainButton from '../../components/MainButton/MainButton';
 import WalletConnect from '@walletconnect/client';
+import StereoImageText from '../../components/StereoImageIcon/StereoImageText';
 // import SelectButton from '../../components/SelectButton/SelectButton';
 
 const LoginScreen = () => {
@@ -74,13 +75,24 @@ const LoginScreen = () => {
    */
 
   return (
-    <View style={{backgroundColor: '#343434', flex: 1}}>
-      <MainButton
-        onPress={connectWallet}
-        text={'Sign In'}
-        isLoading={account.isLoading}
-      />
-      {/*{rpcList()}*/}
+    <View style={styles.container}>
+      <View style={styles.rectangle} />
+      <View style={styles.rectangle1} />
+      <View style={styles.rectangle2} />
+      <View style={styles.rectangle3} />
+      <View style={styles.wrapper}>
+        <View style={styles.logoWrapper}>
+          <StereoImageText text={'NFTILLA'} size={80} />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <MainButton
+            onPress={connectWallet}
+            text={'Sign In'}
+            isLoading={account.isLoading}
+          />
+        </View>
+        {/*{rpcList()}*/}
+      </View>
     </View>
   );
 };

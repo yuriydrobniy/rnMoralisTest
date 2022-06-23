@@ -6,9 +6,6 @@ const styles = StyleSheet.create({
   fieldWrapper: {
     width: '100%',
     position: 'relative',
-    // flexDirection: "row",
-    // alignItems: "center",
-    // textTransform: "lowercase",
   },
 
   textInput: {
@@ -19,17 +16,19 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontSize: Fonts.size.font15,
     borderRadius: 4,
+    paddingLeft: 4,
   },
   lockIcon: {
     position: 'absolute',
     right: 10,
-    top: 12,
+    top: 10,
     padding: 2,
     paddingBottom: 0,
     zIndex: 1,
   },
   textAlignTop: {
     textAlignVertical: 'top',
+    paddingTop: 10,
   },
 });
 

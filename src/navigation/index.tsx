@@ -6,12 +6,16 @@ import {
 } from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+// components
+import CustomTabBar from './CustomTabBar';
+
 // screens
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
 import PreviewScreen from '../screens/PreviewScreen/PreviewScreen';
 import FormsScreen from '../screens/FormsScreen/FormsScreen';
+import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
 
 export type CameraStackParams = {
   Camera: undefined;
@@ -75,7 +79,7 @@ const Tab = createBottomTabNavigator<TabParams>();
 
 function AuthStackScreen() {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator screenOptions={{headerShown: false}}>
       <AuthStack.Screen name="LogIn" component={LoginScreen} />
     </AuthStack.Navigator>
   );
@@ -101,7 +105,6 @@ function CameraStackScreen() {
   );
 }
 
-const SettingsScreen = () => <></>;
 const DetailsScreen = () => <></>;
 
 function SettingsStackScreen() {
@@ -115,7 +118,9 @@ function SettingsStackScreen() {
 
 function Main() {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false, tabBarHideOnKeyboard: true}}>
+    <Tab.Navigator
+      tabBar={props => <CustomTabBar {...props} />}
+      screenOptions={{headerShown: false, tabBarHideOnKeyboard: true}}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
