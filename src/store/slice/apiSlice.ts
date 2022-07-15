@@ -6,7 +6,7 @@ import Moralis from 'moralis/react-native';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({baseUrl: '/'}),
-  tagTypes: ['NFTs'],
+  tagTypes: ['NFTs', 'Pics'],
   endpoints: builder => ({
     getNFTs: builder.query({
       async queryFn(arg) {
@@ -24,7 +24,8 @@ export const apiSlice = createApi({
           });
           return {data};
         } catch (error) {
-          let err = error;
+          // todo - clarify error type
+          let err: any = error;
           return {
             error: {
               status: err.response?.status,
@@ -44,8 +45,45 @@ export const apiSlice = createApi({
             ]
           : [{type: 'NFTs', id: 'LIST'}],
     }),
+    getTestPicks: builder.query({
+      async queryFn(arg, queryApi, extraOptions, fetchWithBQ) {
+        let result;
+        try {
+          result = await fetchWithBQ('https://picsum.photos/v2/list?limit=4');
+          console.log('result of ', result);
+          const data: any = result?.data || [];
+          data.forEach((item: any) => {
+            item.metadata = {
+              name: item?.author,
+              external_url: `${item?.download_url}.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ`,
+            };
+            item.token_id = item?.id;
+            item.amount = 1;
+          });
+          return {data};
+        } catch (error) {
+          let err: any = error;
+          return {
+            error: {
+              status: err.response?.status,
+              data: err.response?.data || err.message,
+            },
+          };
+        }
+      },
+      providesTags: result =>
+        result
+          ? [
+              ...result.map(({token_id}: any) => ({
+                type: 'Pics' as const,
+                id: token_id,
+              })),
+              {type: 'Pics', id: 'LIST'},
+            ]
+          : [{type: 'Pics', id: 'LIST'}],
+    }),
   }),
 });
 
 // Export the auto-generated hook for the `getPosts` query endpoint
-export const {useGetNFTsQuery} = apiSlice;
+export const {useGetNFTsQuery, useGetTestPicksQuery} = apiSlice;

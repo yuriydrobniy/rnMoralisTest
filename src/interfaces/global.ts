@@ -1,22 +1,26 @@
-export interface WalletAddress {
-  address: string;
+export type WalletAddressType = string;
+
+export type ChainIdType =
+  | '0x1'
+  | 'ropsten'
+  | 'rinkeby'
+  | 'goerli'
+  | 'kovan'
+  | string;
+
+export interface WalletSimpleCredential {
+  chainId: ChainIdType;
+  address: WalletAddressType;
 }
 
-export interface ChainId {
-  chainId: '0x1' | 'ropsten' | 'rinkeby' | 'goerli' | 'kovan' | string;
+export type NativeBalanceType = string | any;
+
+export type GetNativeBalanceType = () => Promise<string | void>;
+
+export interface HookNativeBalance {
+  balance: NativeBalanceType;
+  fetchERC20Balance: GetNativeBalanceType;
 }
-
-export interface WalletSimpleCredential extends WalletAddress, ChainId {}
-
-export interface NativeBalance {
-  balance: string | any;
-}
-
-export interface GetNativeBalance {
-  fetchERC20Balance: () => Promise<string | void>;
-}
-
-export interface HookNativeBalance extends GetNativeBalance, NativeBalance {}
 
 export interface Error {
   error: any | undefined;
@@ -30,14 +34,8 @@ export interface RpcProviderMap {
   [providerName: string]: string;
 }
 
-export interface ContentPath {
-  contentPath: string;
-}
+export type ContentPathType = string;
 
-export interface MetadataPath {
-  metadataPath: string;
-}
+export type MetadataPathType = string;
 
-export interface MintStatus {
-  mintStatus: boolean;
-}
+export type MintStatusType = boolean;

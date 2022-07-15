@@ -3,6 +3,7 @@ import {address} from 'hardhat/internal/core/config/config-validation';
 import chainId = Moralis.chainId;
 import {BaseQueryFn} from '@reduxjs/toolkit/query';
 
+// This approach is not used in favor of the easiest solution
 export const customBaseQuery =
   (
     args,

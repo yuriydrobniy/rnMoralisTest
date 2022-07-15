@@ -1,21 +1,20 @@
 import {StyleSheet} from 'react-native';
+import Colors from '../../../theme/colors';
+import Fonts from '../../../theme/fonts';
 
 const styles = StyleSheet.create({
-  buttonStyle: {
-    backgroundColor: '#7DE24E',
-    borderWidth: 0,
-    color: '#FFFFFF',
-    borderColor: '#7DE24E',
-    height: 40,
-    alignItems: 'center',
-    borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
-    marginTop: 20,
-    marginBottom: 25,
+  container: {},
+  containerText: {
+    padding: 8,
+    width: '100%',
+    backgroundColor: Colors.blackMid,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.greyCoal,
   },
-  highlight: {
-    fontWeight: '700',
+  text: {
+    fontFamily: Fonts.type.light,
+    fontSize: Fonts.size.font14,
+    color: Colors.white,
   },
 });
 

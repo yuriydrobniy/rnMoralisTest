@@ -1,11 +1,5 @@
-import React, {memo, useState} from 'react';
-import {
-  Image,
-  View,
-  NativeSyntheticEvent,
-  ImageLoadEventData,
-  LayoutChangeEvent,
-} from 'react-native';
+import React, {memo, useEffect, useState} from 'react';
+import {Image, View, LayoutChangeEvent} from 'react-native';
 import {FullWidthImageProps} from '../../interfaces/components';
 import styles from './styles';
 
@@ -15,24 +9,23 @@ const FullWidthImage = ({url}: FullWidthImageProps): JSX.Element => {
   >(undefined);
   const [layoutWidth, setLayoutWidth] = useState<number | undefined>(undefined);
 
-  const onLoad = ({
-    nativeEvent: {
-      source: {width, height},
-    },
-  }: NativeSyntheticEvent<ImageLoadEventData>) => {
-    const aspectRatio = width / layoutWidth!;
-    setImageRealSize({width, height: height / aspectRatio});
-  };
-
   const onLayout = (event: LayoutChangeEvent) => {
     setLayoutWidth(event.nativeEvent.layout.width);
   };
+
+  useEffect(() => {
+    if (layoutWidth) {
+      Image.getSize(url, (width, height) => {
+        const aspectRatio = width / layoutWidth!;
+        setImageRealSize({width: layoutWidth, height: height / aspectRatio});
+      });
+    }
+  }, [layoutWidth, url]);
 
   return (
     <View onLayout={onLayout}>
       {layoutWidth && (
         <Image
-          onLoad={onLoad}
           style={{
             ...styles.imageContainer,
             ...(imageRealSize ? imageRealSize : {}),

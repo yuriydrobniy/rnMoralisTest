@@ -3,12 +3,12 @@ import Colors from '../../../theme/colors';
 
 const styles = StyleSheet.create({
   listContainer: {
-    flex: 1,
-    paddingHorizontal: 12,
-    // paddingVertical: 10,
-    backgroundColor: 'yellow',
+    paddingHorizontal: 16,
+    paddingTop: 12,
+    paddingBottom: 160,
+    backgroundColor: Colors.blackMid,
   },
-  itemContainer: {},
+  itemContainer: {borderRadius: 8, overflow: 'hidden'},
   textContainer: {
     paddingVertical: 8,
     paddingHorizontal: 4,
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.black,
   },
+  separator: {height: 16, width: '100%'},
 });
 
 export default styles;

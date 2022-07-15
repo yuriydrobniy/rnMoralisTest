@@ -18,6 +18,11 @@ export default function CustomTabBar({
   }, [navigation]);
   return (
     <View style={styles.bottomBar}>
+      <LinearGradient
+        locations={[0, 0.64, 1]}
+        colors={[Colors.transparent, Colors.transparent, Colors.neonPurpleT]}
+        style={styles.linearGradient}
+      />
       <View style={styles.wrapper}>
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
@@ -56,6 +61,7 @@ export default function CustomTabBar({
 
           return (
             <TouchableOpacity
+              key={route.key}
               accessibilityRole="button"
               accessibilityState={isFocused ? {selected: true} : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}

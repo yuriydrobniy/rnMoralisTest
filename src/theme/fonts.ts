@@ -1,13 +1,13 @@
-import { PixelRatio, Platform } from 'react-native'
+import {PixelRatio, Platform} from 'react-native';
 
-const fontScale = PixelRatio.getFontScale()
-const osScale = 1
+const fontScale = PixelRatio.getFontScale();
+const osScale = 1;
 
 const type = {
   base: 'System',
-  regular: (Platform.OS === 'ios') ? 'SanFranciscoText' : 'Roboto',
-  light: (Platform.OS === 'ios') ? 'SanFranciscoText-Light' : 'Roboto-Light',
-}
+  regular: Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto',
+  light: Platform.OS === 'ios' ? 'Helvetica Neue Light' : 'Roboto-Light',
+};
 
 const size = {
   font8: Math.floor(osScale * (8 / fontScale)),
@@ -33,6 +33,6 @@ const size = {
   font34: Math.floor(osScale * (34 / fontScale)),
   font40: Math.floor(osScale * (40 / fontScale)),
   font48: Math.floor(osScale * (48 / fontScale)),
-}
+};
 
-export default { type, size }
+export default {type, size};

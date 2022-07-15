@@ -6,32 +6,26 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 
 // components
-// import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
 import Balance from '../../components/Balance/Balance';
-// import Counter from '../../components/Counter/Counter';
-import SignOut from '../../components/SignOut/SignOut';
-import MainButton from '../../components/MainButton/MainButton';
 
 // styles
 import styles from './styles';
 
 // types
-import {HomeNavigationProps} from '../../navigation';
 import NFTList from '../../components/NFTList/NFTList';
 import {AccountState} from '../../store/slice/accountSlice';
-import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
 
-const HomeScreen = ({navigation}: HomeNavigationProps) => {
+const HomeScreen = () => {
   const account: AccountState = useSelector(
     (state: RootState) => state.account,
   );
-  console.log('account', account);
-  console.log('navigation', navigation);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Balance chainId={account.chainId} address={account.address} />
-      <Text>Your NFT</Text>
+      <View style={styles.containerText}>
+        <Text style={styles.text}>Your NFT</Text>
+      </View>
       <NFTList chainId={account.chainId} address={account.address} />
     </View>
   );

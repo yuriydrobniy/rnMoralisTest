@@ -3,8 +3,9 @@ import {Text, TouchableOpacity} from 'react-native';
 import {WalletConnectContext} from '@walletconnect/react-native-dapp';
 import {persistor} from '../../store';
 import styles from './styles';
+import StereoImageText from '../StereoImageIcon/StereoImageText';
 
-const SignOut = (): JSX.Element => {
+const SignOut = ({likeArt}: {likeArt?: boolean}): JSX.Element => {
   const {connector} = useContext(WalletConnectContext);
   const [isTheEnd, setTheEnd] = useState(false);
 
@@ -25,6 +26,14 @@ const SignOut = (): JSX.Element => {
       asyncPurge();
     }
   }, [connector, isTheEnd]);
+
+  if (likeArt) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <StereoImageText text={'Sign Out'} size={48} />
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <TouchableOpacity style={styles.buttonStyle} onPress={onPress}>

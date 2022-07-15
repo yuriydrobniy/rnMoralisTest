@@ -1,10 +1,12 @@
 import {StyleSheet} from 'react-native';
 import Colors from '../../theme/colors';
 
+const borderColor = Colors.greySpace;
+
 const styles = StyleSheet.create({
   bottomBar: {
     height: 60,
-    backgroundColor: Colors.neonDarkGreyT,
+    backgroundColor: Colors.blackCoal,
     alignItems: 'center',
     justifyContent: 'center',
     width: '80%',
@@ -14,7 +16,24 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 4,
     position: 'absolute',
     bottom: 0,
+    borderLeftWidth: 1,
+    borderLeftColor: borderColor,
+    borderRightWidth: 1,
+    borderRightColor: borderColor,
+    borderTopWidth: 1,
+    borderTopColor: borderColor,
+    shadowColor: Colors.greySpace,
+    shadowOffset: {width: 0, height: 0},
+    shadowOpacity: 0.6,
   },
+  linearGradient: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+  },
+  // linearGradientLeft: {right: "50%", left: 0},
   middleIcon: {
     bottom: 0,
     width: 60,

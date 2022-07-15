@@ -88,7 +88,11 @@ function AuthStackScreen() {
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator
-      screenOptions={{headerTitleAlign: 'center', animation: 'none'}}>
+      screenOptions={{
+        headerShown: false,
+        headerTitleAlign: 'center',
+        animation: 'none',
+      }}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       {/*<HomeStack.Screen options={{}} name="Camera" component={CameraScreen} />*/}
     </HomeStack.Navigator>
