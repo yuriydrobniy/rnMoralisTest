@@ -1,6 +1,7 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Text, View, Platform} from 'react-native';
 import {useSelector} from 'react-redux';
+import DeviceInfo from 'react-native-device-info';
 
 // store
 import {RootState} from '../../store';
@@ -20,13 +21,28 @@ const HomeScreen = () => {
     (state: RootState) => state.account,
   );
 
+  const [isSimulator, setIsSimulator] = useState<boolean>(false);
+  useEffect(() => {
+    const getDevice = async () => {
+      const emulator = await DeviceInfo.isEmulator();
+      const simulator = emulator && Platform.OS === 'ios';
+      setIsSimulator(simulator);
+    };
+
+    getDevice();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Balance chainId={account.chainId} address={account.address} />
       <View style={styles.containerText}>
         <Text style={styles.text}>Your NFT</Text>
       </View>
-      <NFTList chainId={account.chainId} address={account.address} />
+      <NFTList
+        chainId={account.chainId}
+        address={account.address}
+        simulator={isSimulator}
+      />
     </View>
   );
 };

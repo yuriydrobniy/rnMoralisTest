@@ -1,12 +1,23 @@
-import React, {useEffect} from 'react';
-import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
-import useNFTList from '../../hooks/useNFTList';
-import {WalletSimpleCredential} from '../../interfaces/global';
-import styles from './styles';
-import {useGetNFTsQuery, useGetTestPicksQuery} from '../../store/slice/apiSlice';
+import React from 'react';
+import {FlatList, Text, View} from 'react-native';
+
+// components
 import FullWidthImage from '../FullWidthImage/FullWidthImage';
 
-const NFTList = ({address, chainId}: WalletSimpleCredential): JSX.Element => {
+// store
+import {useGetNFTsQuery} from '../../store/slice/apiSlice';
+
+// styles
+import styles from './styles';
+
+// types
+import {WalletSimpleCredential} from '../../interfaces/global';
+
+const NFTList = ({
+  address,
+  chainId,
+  simulator,
+}: WalletSimpleCredential & {simulator: boolean}): JSX.Element => {
   const {
     data: nftList = [],
     isLoading,
@@ -16,16 +27,18 @@ const NFTList = ({address, chainId}: WalletSimpleCredential): JSX.Element => {
     error,
     refetch,
   } = useGetNFTsQuery(
-  // } = useGetTestPicksQuery(
-    {address, chainId},
-    // {refetchOnMountOrArgChange: true}
+    {address, chainId, simulator},
+    // {refetchOnMountOrArgChange: true},
   );
 
-  console.log('nftList -->>', {nftList, isLoading,
+  console.log('nftList -->>', {
+    nftList,
+    isLoading,
     isFetching,
     isSuccess,
     isError,
-    error,})
+    error,
+  });
 
   const onRefresh = () => {
     refetch();
@@ -41,7 +54,7 @@ const NFTList = ({address, chainId}: WalletSimpleCredential): JSX.Element => {
       removeClippedSubviews={false}
       bounces={true}
       numColumns={1}
-      ItemSeparatorComponent={() => <View style={styles.separator} /> }
+      ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={({item}) => {
         const name = item.metadata?.name || '';
         const url = item.metadata?.external_url || '';
