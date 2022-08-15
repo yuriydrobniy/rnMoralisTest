@@ -67,7 +67,9 @@ const NameDescriptionForm = ({
             )}
             name="name"
           />
-          {errors.name && <Text>Name is required.</Text>}
+          {errors.name && (
+            <Text style={styles.errorText}>Name is required.</Text>
+          )}
         </View>
       </View>
 
@@ -91,7 +93,9 @@ const NameDescriptionForm = ({
           )}
           name="description"
         />
-        {errors.description && <Text>Description is required.</Text>}
+        {errors.description && (
+          <Text style={styles.errorText}>Description is required.</Text>
+        )}
 
         <MainButton onPress={handleSubmit(onSubmit)} text="Submit" />
       </View>

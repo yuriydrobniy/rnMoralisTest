@@ -25,8 +25,13 @@ export default {
   greyMid: '#8C8C8C',
   whiteDirty: '#D7D7D7',
 
+  transparent: 'rgba(0,0,0,0)',
+
   lilac: '#8C52FF',
   neonBlue: '#01FFFF',
   neonPink: '#FF00FF',
   neonDarkGrey: '#545454',
+  neonRed: '#FF195A',
+  neonDarkGreyT: 'rgba(84,84,84,0.67)',
+  neonPurpleT: 'rgba(158,61,185,0.3)',
 };

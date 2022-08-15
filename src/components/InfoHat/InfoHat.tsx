@@ -1,9 +1,9 @@
 import React, {memo} from 'react';
 import {Text, View} from 'react-native';
 import styles from './styles';
-import {ChainId} from '../../interfaces/global';
+import {ChainIdType} from '../../interfaces/global';
 
-const InfoHat = ({chainId}: ChainId): JSX.Element => {
+const InfoHat = ({chainId}: {chainId: ChainIdType}): JSX.Element => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{chainId}</Text>

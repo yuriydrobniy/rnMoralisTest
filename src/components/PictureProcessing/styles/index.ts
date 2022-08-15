@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {flex: 1, flexDirection: 'row', alignItems: 'flex-start'},
+  errorText: {
+    paddingLeft: 4,
+    color: Colors.neonRed,
+  },
 });
 
 export default styles;

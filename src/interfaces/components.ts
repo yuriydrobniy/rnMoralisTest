@@ -18,3 +18,12 @@ export interface StereoImageIconType {
   name: string;
   size: number;
 }
+
+export interface StereoImageIconProps {
+  text: string;
+  size: number;
+}
+
+export interface FullWidthImageProps {
+  url: string;
+}

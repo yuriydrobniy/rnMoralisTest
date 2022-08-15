@@ -1,46 +1,48 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Text, View, Platform} from 'react-native';
 import {useSelector} from 'react-redux';
+import DeviceInfo from 'react-native-device-info';
 
 // store
 import {RootState} from '../../store';
 
 // components
-// import PictureProcessing from '../../components/PictureProcessing/PicturePocessing';
 import Balance from '../../components/Balance/Balance';
-// import Counter from '../../components/Counter/Counter';
-import SignOut from '../../components/SignOut/SignOut';
-import MainButton from '../../components/MainButton/MainButton';
 
 // styles
 import styles from './styles';
 
 // types
-import {HomeNavigationProps} from '../../navigation';
 import NFTList from '../../components/NFTList/NFTList';
 import {AccountState} from '../../store/slice/accountSlice';
 
-const HomeScreen = ({navigation}: HomeNavigationProps) => {
+const HomeScreen = () => {
   const account: AccountState = useSelector(
     (state: RootState) => state.account,
   );
-  console.log('account', account);
-  console.log('navigation', navigation);
+
+  const [isSimulator, setIsSimulator] = useState<boolean>(false);
+  useEffect(() => {
+    const getDevice = async () => {
+      const emulator = await DeviceInfo.isEmulator();
+      const simulator = emulator && Platform.OS === 'ios';
+      setIsSimulator(simulator);
+    };
+
+    getDevice();
+  }, []);
 
   return (
-    <View>
-      <View>
-        <Balance chainId={account.chainId} address={account.address} />
-        <NFTList chainId={account.chainId} address={account.address} />
+    <View style={styles.container}>
+      <Balance chainId={account.chainId} address={account.address} />
+      <View style={styles.containerText}>
+        <Text style={styles.text}>Your NFT</Text>
       </View>
-      {/*<Counter />*/}
-      {/*<PictureProcessing address={account.address} chainId={account.chainId} />*/}
-      <MainButton
-        onPress={() => navigation.navigate('CameraStack')}
-        isLoading={false}
-        text={'Camera'}
+      <NFTList
+        chainId={account.chainId}
+        address={account.address}
+        simulator={isSimulator}
       />
-      <SignOut />
     </View>
   );
 };

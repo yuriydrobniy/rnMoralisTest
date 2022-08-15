@@ -23,10 +23,7 @@ const useNFTList = ({
   }, [isInitialized, chainId, address]);
 
   const fetchNFTList = async (): Promise<any> => {
-    console.log('fetchNFTList -->', {
-      address,
-      chainId,
-    });
+    console.log('fetchNFTList Moralis -->', Moralis);
     return await Moralis.Web3API.account
       .getNFTs({address: address, chain: chainId})
       .then(result => {

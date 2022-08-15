@@ -1,8 +1,16 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {PURGE} from 'redux-persist';
-import {ContentPath, MetadataPath, MintStatus} from '../../interfaces/global';
+import {
+  ContentPathType,
+  MetadataPathType,
+  MintStatusType,
+} from '../../interfaces/global';
 
-export interface ContentState extends MetadataPath, ContentPath, MintStatus {}
+export interface ContentState {
+  metadataPath: MetadataPathType;
+  contentPath: ContentPathType;
+  mintStatus: MintStatusType;
+}
 
 const initialState: ContentState = {
   contentPath: '',
@@ -14,15 +22,24 @@ export const contentSlice = createSlice({
   name: 'content',
   initialState,
   reducers: {
-    setContentPath: (state, action: PayloadAction<ContentPath>) => {
+    setContentPath: (
+      state,
+      action: PayloadAction<{contentPath: ContentPathType}>,
+    ) => {
       const {contentPath} = action.payload;
       state.contentPath = contentPath;
     },
-    setMetadataPath: (state, action: PayloadAction<MetadataPath>) => {
+    setMetadataPath: (
+      state,
+      action: PayloadAction<{metadataPath: MetadataPathType}>,
+    ) => {
       const {metadataPath} = action.payload;
       state.metadataPath = metadataPath;
     },
-    setMintStatus: (state, action: PayloadAction<MintStatus>) => {
+    setMintStatus: (
+      state,
+      action: PayloadAction<{mintStatus: MintStatusType}>,
+    ) => {
       const {mintStatus} = action.payload;
       state.mintStatus = mintStatus;
     },

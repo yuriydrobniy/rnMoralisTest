@@ -4,6 +4,7 @@ import React, {
   useState,
   useCallback,
   useMemo,
+  memo,
 } from 'react';
 import {
   KeyboardAvoidingView,
@@ -26,7 +27,7 @@ import {mintContent, storeContent} from './utils';
 // import useNFTList from '../../hooks/useNFTList';
 
 // constants
-import {CHAIN_ID, RPC} from '../../constants/global';
+import {CHAIN_ID, RPC_ALCHEMY, RPC_MORALIS} from '../../constants/global';
 
 // actions
 import {
@@ -37,7 +38,7 @@ import {
 } from '../../store/slice/contentSlice';
 
 // types
-import {ChainId, WalletAddress} from '../../interfaces/global';
+import {ChainIdType, WalletAddressType} from '../../interfaces/global';
 import {RootState} from '../../store';
 
 // styles
@@ -48,8 +49,8 @@ const PictureProcessing = ({
   chainId,
   data,
 }: {
-  address: WalletAddress;
-  chainId: ChainId;
+  address: WalletAddressType;
+  chainId: ChainIdType;
   data: string;
 }): JSX.Element => {
   const dispatch = useDispatch();
@@ -66,10 +67,13 @@ const PictureProcessing = ({
   );
 
   useEffect(() => {
+    if (!chainId) return;
     const initProvider = async (): Promise<void> => {
       const id: number = +getKeyByValue(CHAIN_ID, chainId)!;
+      // console.log('-> RPC_ALCHEMY[chainId] <-', RPC_ALCHEMY[chainId]);
       const settings = {
-        rpc: {[id]: RPC[chainId]},
+        // rpc: {[id]: RPC_MORALIS[chainId]},
+        rpc: {[id]: RPC_ALCHEMY[chainId]},
         chainId: id,
         connector: connector,
         qrcode: false,
@@ -172,4 +176,4 @@ const PictureProcessing = ({
   );
 };
 
-export default PictureProcessing;
+export default memo(PictureProcessing);

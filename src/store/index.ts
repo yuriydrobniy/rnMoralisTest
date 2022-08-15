@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootReducer from './reducers';
+import {apiSlice} from './slice/apiSlice';
 
 const persistConfig: PersistConfig<any> = {
   key: 'root',
@@ -28,7 +29,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(apiSlice.middleware),
 });
 
 const persistor = persistStore(store);
